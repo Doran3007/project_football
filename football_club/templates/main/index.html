@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Football club</h1>
+
+    <!-- fc-iterator, clubs - alias for data, we have in view function -->
+    <ul>
+        {% for fc in clubs %}
+            <li><img src="{{ fc.logo.url }}" style="max-height: 40px;"> ({{fc.name}}, {{fc.league}})</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

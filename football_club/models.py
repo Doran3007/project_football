@@ -16,7 +16,7 @@ class Club(models.Model):
     country = models.CharField(max_length=64)
     league = models.CharField(max_length=64)
     logo = models.ImageField(null=True, blank=True)
-    trophy = models.ManyToManyField(Trophy)
+    trophy = models.ManyToManyField(Trophy, null=True, blank=True)
 
 
     def __str__(self):

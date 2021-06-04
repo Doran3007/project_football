@@ -12,11 +12,11 @@
     <h1>Football clubs</h1>
         <!-- fc-iterator, clubs - alias for data, we have in view function -->
         <ul>
-            {% for fc in clubs %}
-                <li><img src="{{ fc.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
-                <a href="{{ fc.get_absolute_url }}">{{fc.name}}</a>
+            {% for c in clubs %}
+                <li><img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
+                    <a href="{{ c.get_absolute_url }}">{{c.name}}</a>
                 </li>
-                    <!-- ({{fc.name}}, {{fc.league}})</li> -->
+                    <!-- ({{c.name}}, {{c.league}})</li> -->
             {% endfor %}
         </ul>
     {% endblock %}

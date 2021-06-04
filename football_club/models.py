@@ -32,7 +32,7 @@ class Club(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('club', kwargs={'club_slug': self.slug})
+        return reverse('football_club:club', kwargs={'club_slug': self.slug})
 
 
 

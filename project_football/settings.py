@@ -60,7 +60,10 @@ ROOT_URLCONF = 'project_football.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            '/football_club/templates/club',
+            '/football_club/templates/main',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

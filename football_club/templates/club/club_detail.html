@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        {{football_club.name}}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <h1>mazafaka shit goddamn</h1>
+        <h1>{{football_club.name}}</h1>
+        <!-- fc-iterator, clubs - alias for data, we have in view function -->
+        <li><img src="{{ football_club.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
+    {% endblock %}
+</body>
+</html>

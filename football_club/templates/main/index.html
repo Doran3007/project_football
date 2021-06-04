@@ -14,7 +14,9 @@
         <ul>
             {% for fc in clubs %}
                 <li><img src="{{ fc.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
-                    ({{fc.name}}, {{fc.league}})</li>
+                <a href="{{ fc.get_absolute_url }}">{{fc.name}}</a>
+                </li>
+                    <!-- ({{fc.name}}, {{fc.league}})</li> -->
             {% endfor %}
         </ul>
     {% endblock %}

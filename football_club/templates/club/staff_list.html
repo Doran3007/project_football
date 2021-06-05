@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    Известные личности
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <h1>Известные личности</h1>
+    <ul>
+        {% for s in staff %}
+        <li><img src="{{ s.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
+            <a href="{{ s.get_absolute_url }}">{{s.first_name}} {{s.second_name}} {{s.role}} {{s.club}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+</body>
+</html>
+

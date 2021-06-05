@@ -10,7 +10,6 @@
 <body>
     {% block body %}
     <h1>Football clubs</h1>
-        <!-- fc-iterator, clubs - alias for data, we have in view function -->
         <ul>
             {% for c in clubs %}
                 <li><img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 

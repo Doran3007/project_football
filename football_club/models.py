@@ -14,7 +14,7 @@ class Trophy(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('trophy', kwargs={'trophy_slug': self.slug})
+        return reverse('football_club:trophy', kwargs={'trophy_slug': self.slug})
 
 
 class Club(models.Model):
@@ -51,7 +51,7 @@ class Staff(models.Model):
         return self.first_name
 
     def get_absolute_url(self):
-        return reverse('staff', kwargs={'staff_slug': self.slug})
+        return reverse('football_club:staff', kwargs={'staff_slug': self.slug})
 
 
 class Stadium(models.Model):
@@ -69,4 +69,4 @@ class Stadium(models.Model):
     
     
     def get_absolute_url(self):
-        return reverse('stadium', kwargs={'stadium_slug': self.slug})
+        return reverse('football_club:stadium', kwargs={'stadium_slug': self.slug})

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        {{stadium.name}}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+        <h1>{{stadium.name}}</h1>
+        <li>
+            <img src="{{ stadium.logo.url }}" style="max-height: 100px; width:100px; margin: 5px;"> 
+            <span>
+                Стадион расположен в {{stadium.location}}, максимально может вместить {{stadium.capacity}} людей одновременно.
+                Построен и открыт в {{stadium.created}}. На нем играет {{stadium.club}}
+            </span>
+                    </li>
+    {% endblock %}
+</body>
+</html>

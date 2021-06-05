@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        {{staff.first_name}}  {{staff.second_name}}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+
+        <li>
+            <img src="{{ staff.logo.url }}" style="max-height: 100px; width:50px; margin: 5px;">
+            {{staff.first_name}}  {{staff.second_name}}, {{staff.role}} {{staff.birthday}} {{staff.age}} {{staff.club}}
+        </li>
+    
+    
+    {% endblock %}
+</body>
+</html>

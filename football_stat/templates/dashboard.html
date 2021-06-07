@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+<html lang="en">
+    <Head>
+        <meta charset="UTF-8">
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        {% block title %}
+            Football clubs
+        {% endblock %}
+    </Head>
+    <Body>
+        {% block body %}
+
+        <div class="row mt--2">
+            <div class="col-md-6">
+                <div class="card full-height">
+                    <div class="card-body">
+                        <div class="card-title">Статистика команд</div>
+                        <div class="card-category">Наибольшее кол-во исходов показателей</div>
+                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+                            <div class="px-2 pb-2 pb-md-0 text-center">
+                                <div id="circles-1"></div>
+                                <h6 class="fw-bold mt-3 mb-0">Забитые голы</h6>
+                            </div>
+                            <div class="px-2 pb-2 pb-md-0 text-center">
+                                <div id="circles-2"></div>
+                                <h6 class="fw-bold mt-3 mb-0">Пропущенные голы</h6>
+                            </div>
+                            <div class="px-2 pb-2 pb-md-0 text-center">
+                                <div id="circles-3"></div>
+                                <h6 class="fw-bold mt-3 mb-0">Лучшая разница</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card full-height">
+                    <div class="card-body">
+                        <div class="card-title">Итоги Премьер Лиги</div>
+                        <div class="row py-3">
+                            <div class="d-flex flex-column justify-content-around">
+                                <div>
+                                    <h6 class="fw-bold text-uppercase text-success op-8">Чемпион</h6>
+                                    <h3 class="fw-bold">{{champion}}</h3>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold text-uppercase text-danger op-8">Наибольшее кол-во побед</h6>
+                                    <h3 class="fw-bold">{{mostvictoryteam}} - {{mostvictory}} матчей</h3>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold text-uppercase text-danger op-8">Наибольшее кол-во поражений</h6>
+                                    <h3 class="fw-bold">{{mostdeafetteam}} - {{mostdeafet}} матчей</h3>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold text-uppercase text-danger op-8">Наибольшее кол-во ничьих</h6>
+                                    <h3 class="fw-bold">{{mostdrawteam}} - {{mostdraw}} матчей</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {{goalforpermatch}}
+            {{goalagainstpermatch}}
+            {{allgoalfor}}
+            {{allgoalagainst}}
+            {{max_goal_for}}
+            {{max_goal_against}}
+            {{mostgoalforteam}}
+            {{mostgoalagainstteam}}
+            {{better_diference_goal}}
+
+        </div>
+        <canvas id="totalIncomeChart" width="400" height="400"></canvas>
+        <div>
+            {{table|safe}}
+        </div>
+
+    {% endblock %}
+    	<!--   Core JS Files   -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/jquery.3.2.1.min.js"></script>
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/popper.min.js"></script>
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/bootstrap.min.js"></script>
+
+	<!-- jQuery UI -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+	<!-- Chart JS -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart.js/chart.min.js"></script>
+
+	<!-- jQuery Sparkline -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+	<!-- Chart Circle -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart-circle/circles.min.js"></script>
+
+	<!-- Datatables -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/datatables/datatables.min.js"></script>
+
+	<!-- Bootstrap Notify -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+	<!-- jQuery Vector Maps -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+	<!-- Sweet Alert -->
+	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Specific Page JS goes HERE  -->
+    <script>
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value: 40,
+			maxValue:100,
+			width:7,
+			text: 5,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value: 75,
+			maxValue:100,
+			width:7,
+			text: 36,
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value: 85,
+			maxValue:100,
+			width:7,
+			text: 12,
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+        </script>
+
+        <script> 
+		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+		var mytotalIncomeChart = new Chart(totalIncomeChart, {
+			type: 'bar',
+			data: {
+				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+				datasets : [{
+					label: "Total Income",
+					backgroundColor: '#ff9e27',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		});
+        </script>
+        <script> 
+		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+        </script>
+        <script>
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chartOptions = {
+                            legend: {
+                                display: false
+                                    },
+                            scales: {
+                                xAxes: [{
+                                    barPercentage:1
+                                    }],
+                                yAxes: [
+                                        // {barPercentage: 1},
+                                        // {gridLines:{drawBorder: false}},
+                                        {ticks: {display:false}},
+                                        // {ticks: {mirror: true}},
+                                        {display: false},
+                                        
+                                        ],
+                            elements: {
+                                rectangle: {
+                                borderSkipped: 'left',
+                                }
+                            }
+                            }
+                        };
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'horizontalBar',
+
+        // The data for our dataset
+        data: {
+            labels: {{ contryNames|safe }},
+            datasets: [{
+                data: {{ countsVal|safe }},
+                label: 'Infected Counts',
+                barThickness:'flex',
+                backgroundColor:'#03a9fc',  
+                
+            }]
+        },
+
+        
+
+        // Configuration options go here
+        options: chartOptions
+});
+</script>
+    </Body>
+</html>

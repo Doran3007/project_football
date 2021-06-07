@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     # my app
     'project_football',
     'football_club',
+    'football_stat',
+
 ]
 
 MIDDLEWARE = [
@@ -61,8 +63,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/football_club/templates/club',
             os.path.join(BASE_DIR, 'templates'),
+            '/project_football/football_stat',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

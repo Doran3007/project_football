@@ -10,11 +10,27 @@
 </head>
 <body>
     {% block body %}
-        <h1>{{trophy.name}}</h1>
-        <li>
-            <img src="{{ trophy.logo.url }}" style="max-height: 100px; width:100px; margin: 5px;"> 
-            <span>text</span>
-                    </li>
+    <div class="container-fluid">
+        <h1 class="text-center">{{trophy.name}}</h1>
+        <div class="row mt--2">
+            <div class="col-md-6"> 
+                <h6>
+                    <img class="center" src="{{ trophy.logo.url }}" style="max-height: 200px; width:200px; margin: 5px;">
+                    <p>Действующий обладатель: {{trophy.actual_owner}}</p> <p>Наиболее титулован: {{trophy.recordsman}}</p>
+                </h6>
+            </div> 
+            <div class="col-md-6">
+                <img src="#" style="max-height: 200px; width:200px; margin: 5px;">
+                <span>{{trophy.actual_owner}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <span class="text-center">{{trophy.content|safe}}</span>
+                <p class="list-unstyled">{{trophy.winers}}</p>
+            </div>
+        </div> 
+    </div>
     {% endblock %}
 </body>
 </html>

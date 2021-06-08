@@ -5,9 +5,15 @@ from django.urls import reverse
 # Create your models here.
 class Trophy(models.Model):
     name = models.CharField(max_length=64, unique=True, null=True)
-    amount = models.CharField(max_length=64, null=True, blank=True)
     logo = models.ImageField(null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    content = models.TextField(blank=True, verbose_name="Текст", null=True)
+    created = models.DateField(null=True)
+    winers = models.TextField(blank=True, verbose_name="Список обладателей", null=True)
+    actual_owner = models.CharField(max_length=64, unique=True, null=True)
+    recordsman = models.CharField(max_length=64, unique=True, null=True)
+
+
 
     def __str__(self):
         return self.name
@@ -25,6 +31,10 @@ class Club(models.Model):
     logo = models.ImageField(null=True, blank=True)
     trophy = models.ManyToManyField(Trophy, null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    content = models.TextField(blank=True, verbose_name="Текст", null=True)
+    trophylist = models.TextField(blank=True, verbose_name="Достижения", null=True)
+
+
 
 
     def __str__(self):
@@ -45,6 +55,10 @@ class Staff(models.Model):
     club = models.ForeignKey(Club, on_delete=models.PROTECT)
     logo = models.ImageField(null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    content = models.TextField(blank=True, verbose_name="Текст", null=True)
+    trophylist = models.TextField(blank=True, verbose_name="Достижения", null=True)
+
+
 
 
     def __str__(self):
@@ -62,6 +76,10 @@ class Stadium(models.Model):
     club = models.ForeignKey(Club, on_delete=models.PROTECT)
     logo = models.ImageField(upload_to='', null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    content = models.TextField(blank=True, verbose_name="Текст", null=True)
+    bestgames = models.TextField(blank=True, verbose_name="Лучшие матчи", null=True)
+
+
 
     
     def __str__(self):

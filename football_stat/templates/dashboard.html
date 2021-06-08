@@ -6,82 +6,102 @@
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+        <style>
+            #chartdiv {
+              width: 100%;
+              height: 600px;
+            }
+        </style>
+
         {% block title %}
-            Football clubs
+            DashBoard
         {% endblock %}
     </Head>
     <Body>
         {% block body %}
+        <div class="container-fluid"> 
+            <h3 class="text-center">Сезон <small class="text-muted">{{startSeason}}/{{endtSeason}}</small></h3>
+            <div class="row mt--2">
+                <div class="col-md-6">
+                    <div class="card full-height">
+                        <div class="card-body">
+                            <div class="card-category text-center"><h6>Показатели</h6></div>
+                            <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+                                <div class="px-2 pb-2 pb-md-0 text-center">
+                                    <div id="circles-1"></div>
+                                    <h6 class="fw-bold mt-3 mb-0">Забитые голы<p class="text-muted">{{mostgoalforteam}}</p></h6>
+                                </div>
+                                <div class="px-2 pb-2 pb-md-0 text-center">
+                                    <div id="circles-2"></div>
+                                    <h6 class="fw-bold mt-3 mb-0">Пропущенные голы<p class="text-muted">{{mostgoalagainstteam}}</p></h6>
 
-        <div class="row mt--2">
-            <div class="col-md-6">
-                <div class="card full-height">
-                    <div class="card-body">
-                        <div class="card-title">Статистика команд</div>
-                        <div class="card-category">Наибольшее кол-во исходов показателей</div>
-                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
-                            <div class="px-2 pb-2 pb-md-0 text-center">
-                                <div id="circles-1"></div>
-                                <h6 class="fw-bold mt-3 mb-0">Забитые голы</h6>
-                            </div>
-                            <div class="px-2 pb-2 pb-md-0 text-center">
-                                <div id="circles-2"></div>
-                                <h6 class="fw-bold mt-3 mb-0">Пропущенные голы</h6>
-                            </div>
-                            <div class="px-2 pb-2 pb-md-0 text-center">
-                                <div id="circles-3"></div>
-                                <h6 class="fw-bold mt-3 mb-0">Лучшая разница</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card full-height">
-                    <div class="card-body">
-                        <div class="card-title">Итоги Премьер Лиги</div>
-                        <div class="row py-3">
-                            <div class="d-flex flex-column justify-content-around">
-                                <div>
-                                    <h6 class="fw-bold text-uppercase text-success op-8">Чемпион</h6>
-                                    <h3 class="fw-bold">{{champion}}</h3>
                                 </div>
-                                <div>
-                                    <h6 class="fw-bold text-uppercase text-danger op-8">Наибольшее кол-во побед</h6>
-                                    <h3 class="fw-bold">{{mostvictoryteam}} - {{mostvictory}} матчей</h3>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold text-uppercase text-danger op-8">Наибольшее кол-во поражений</h6>
-                                    <h3 class="fw-bold">{{mostdeafetteam}} - {{mostdeafet}} матчей</h3>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold text-uppercase text-danger op-8">Наибольшее кол-во ничьих</h6>
-                                    <h3 class="fw-bold">{{mostdrawteam}} - {{mostdraw}} матчей</h3>
+                                <div class="px-2 pb-2 pb-md-0 text-center">
+                                    <div id="circles-3"></div>
+                                    <h6 class="fw-bold mt-3 mb-0">Лучшая разница<p class="text-muted">{{mostgoaldiffteam}}</p></h6>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="card full-height mt-2">
+                        <div class="card-body">
+                            <div class="card-title text-center"><h5 class="fw-bold">Итоги <small class="text-muted">Премьер лиги</small></h5></div>
+                                <div class="row py-3">
+                                    <div class="d-flex flex-column justify-content-around">
+                                            <h3 class="fw-bold text-uppercase text-primary op-8 text-center">Чемпион</h3>
+                                            <h5 class="fw-bold text-center">
+                                                {% for c in club %}
+                                                    {% if c.name in champion %}
+                                                        <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
+                                                    {% endif %}
+                                                {% endfor %} 
+                                                {{champion}}
+                                            </h5>
+                                            <h4 class="fw-bold text-uppercase text-success op-8 text-center">Наибольшее кол-во побед</h4>
+                                            <h6 class="fw-bold text-center">                                        
+                                                {% for c in club %}
+                                                {% if c.name in mostvictoryteam %}
+                                                    <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
+                                                {% endif %}
+                                                {% endfor %}
+                                                {{mostvictoryteam}} <small class="text-muted">- {{mostvictory}} матчей</small>
+                                            </h6>
+                                            <h3 class="fw-bold text-uppercase text-danger op-8 text-center">Наибольшее кол-во поражений</h3>
+                                                <h6 class="fw-bold text-center">
+                                                    {% for c in club %}
+                                                    {% if c.name in mostdeafetteam %}
+                                                        <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {{mostdeafetteam}} <small class="text-muted">- {{mostdeafet}} матчей</small>
+                                                </h6>
+                                            <h4 class="fw-bold text-uppercase text-warning op-8 text-center">Наибольшее кол-во ничьих</h4>
+                                            <h6 class="fw-bold text-center">
+                                                {% for c in club %}
+                                                    {% if c.name in mostdrawteam %}
+                                                        <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {{mostdrawteam}} <small class="text-muted">- {{mostdraw}} матчей</small>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="chartdiv"></div>
+                        </div>
+                <div class="col-md-6 mt-2">
+                    {{table|safe}}
                 </div>
             </div>
-        </div>
-            {{goalforpermatch}}
-            {{goalagainstpermatch}}
-            {{allgoalfor}}
-            {{allgoalagainst}}
-            {{max_goal_for}}
-            {{max_goal_against}}
-            {{mostgoalforteam}}
-            {{mostgoalagainstteam}}
-            {{better_diference_goal}}
-
-        </div>
-        <canvas id="totalIncomeChart" width="400" height="400"></canvas>
-        <div>
-            {{table|safe}}
+            <div>
+                Тесты
+            </div>
         </div>
 
-    {% endblock %}
-    	<!--   Core JS Files   -->
+
+    <!--   Core JS Files   -->
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/jquery.3.2.1.min.js"></script>
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/popper.min.js"></script>
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/bootstrap.min.js"></script>
@@ -115,16 +135,22 @@
 	<!-- Sweet Alert -->
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/sweetalert/sweetalert.min.js"></script>
 
+    <!-- cloud tag -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
     <!-- Specific Page JS goes HERE  -->
     <script>
 		Circles.create({
 			id:'circles-1',
 			radius:45,
-			value: 40,
+			value: {{max_goal_for|safe}},
 			maxValue:100,
 			width:7,
-			text: 5,
-			colors:['#f1f1f1', '#FF9E27'],
+			text: {{max_goal_for|safe}},
+			colors:['#f1f1f1', '#2BB930'],
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',
@@ -135,11 +161,11 @@
 		Circles.create({
 			id:'circles-2',
 			radius:45,
-			value: 75,
+			value: {{max_goal_against|safe}},
 			maxValue:100,
 			width:7,
-			text: 36,
-			colors:['#f1f1f1', '#2BB930'],
+			text: {{max_goal_against|safe}},
+			colors:['#f1f1f1', '#F25961'], 
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',
@@ -150,11 +176,11 @@
 		Circles.create({
 			id:'circles-3',
 			radius:45,
-			value: 85,
+			value: {{ better_diference_goal|safe }},
 			maxValue:100,
 			width:7,
-			text: 12,
-			colors:['#f1f1f1', '#F25961'],
+			text: {{ better_diference_goal|safe }},
+			colors:['#f1f1f1', '#FF9E27'],
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',
@@ -162,104 +188,99 @@
 			styleText:true
 		})
         </script>
-
-        <script> 
-		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
-		var mytotalIncomeChart = new Chart(totalIncomeChart, {
-			type: 'bar',
-			data: {
-				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-				datasets : [{
-					label: "Total Income",
-					backgroundColor: '#ff9e27',
-					borderColor: 'rgb(23, 125, 255)',
-					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
-				}],
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				legend: {
-					display: false,
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							display: false //this will remove only the label
-						},
-						gridLines : {
-							drawBorder: false,
-							display : false
-						}
-					}],
-					xAxes : [ {
-						gridLines : {
-							drawBorder: false,
-							display : false
-						}
-					}]
-				},
-			}
-		});
-        </script>
-        <script> 
-		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
-			type: 'line',
-			height: '70',
-			width: '100%',
-			lineWidth: '2',
-			lineColor: '#ffa534',
-			fillColor: 'rgba(255, 165, 52, .14)'
-		});
-        </script>
+        <!-- cloud tag -->
         <script>
-
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chartOptions = {
-                            legend: {
-                                display: false
-                                    },
-                            scales: {
-                                xAxes: [{
-                                    barPercentage:1
-                                    }],
-                                yAxes: [
-                                        // {barPercentage: 1},
-                                        // {gridLines:{drawBorder: false}},
-                                        {ticks: {display:false}},
-                                        // {ticks: {mirror: true}},
-                                        {display: false},
-                                        
-                                        ],
-                            elements: {
-                                rectangle: {
-                                borderSkipped: 'left',
-                                }
-                            }
-                            }
-                        };
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'horizontalBar',
-
-        // The data for our dataset
-        data: {
-            labels: {{ contryNames|safe }},
-            datasets: [{
-                data: {{ countsVal|safe }},
-                label: 'Infected Counts',
-                barThickness:'flex',
-                backgroundColor:'#03a9fc',  
-                
-            }]
-        },
-
-        
-
-        // Configuration options go here
-        options: chartOptions
-});
-</script>
+            am4core.ready(function() {
+            
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
+            
+            var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+            chart.fontFamily = "Courier New";
+            var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+            series.randomness = 0.1;
+            series.rotationThreshold = 0.5;
+            
+            series.data = [ {
+                "tag": "liverpool",
+                "count": "200000"
+            },
+            {
+                "tag": "brighton-hove-albion-fc",
+                "count": "50000"
+            },
+            {
+                "tag": "sheffield-united-fc",
+                "count": "45000"
+            },
+            {
+                "tag": "Leeds",
+                "count": "100000"
+            },
+            {
+                "tag": "Leicester",
+                "count": "110000"
+            },
+            {
+                "tag": "West_Ham",
+                "count": "115000"
+            },
+            {
+                "tag": "Everton",
+                "count": "120000"
+            },
+            {
+                "tag": "Tottenham",
+                "count": "140000"
+            },
+            {
+                "tag": "Arsenal",
+                "count": "170000"
+            },
+            {
+                "tag": "Chelsea",
+                "count": "195000"
+            },
+            {
+                "tag": "Manchester_City",
+                "count": "194000"
+            },
+            {
+                "tag": "Manchester_United",
+                "count": "190000"
+            },
+        ];
+            
+            series.dataFields.word = "tag";
+            series.dataFields.value = "count";
+            
+            series.heatRules.push({
+             "target": series.labels.template,
+             "property": "fill",
+             "min": am4core.color("#0000CC"),
+             "max": am4core.color("#CC00CC"),
+             "dataField": "value"
+            });
+            
+            series.labels.template.url = "/club/{word}";
+            series.labels.template.urlTarget = "_blank";
+            series.labels.template.tooltipText = "{word}: {value}";
+            
+            var hoverState = series.labels.template.states.create("hover");
+            hoverState.properties.fill = am4core.color("#FF0000");
+            
+            var subtitle = chart.titles.create();
+            subtitle.text = "(-)";
+            
+            var title = chart.titles.create();
+            title.text = "Статистика команды";
+            title.fontSize = 18;
+            title.fontWeight = "800";
+            
+            }); // end am4core.ready()
+            </script>
+            
+        {% endblock %}
     </Body>
 </html>

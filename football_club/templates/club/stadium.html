@@ -1,23 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% block title %}
-        {{stadium.name}}
-    {% endblock %}
-</head>
-<body>
-    {% block body %}
-        <h1>{{stadium.name}}</h1>
-        <li>
-            <img src="{{ stadium.logo.url }}" style="max-height: 100px; width:100px; margin: 5px;"> 
-            <span>
-                Стадион расположен в {{stadium.location}}, максимально может вместить {{stadium.capacity}} людей одновременно.
-                Построен и открыт в {{stadium.created}}. На нем играет {{stadium.club}}
-            </span>
-                    </li>
-    {% endblock %}
-</body>
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}
+            {{stadium.name}}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <div class="container-fluid">
+                <h1 class="text-center">{{stadium.name}}</h1>
+                <div class="row mt--2 justify-content-between">
+                    <div class="col-6"> 
+                        <span class="text-center">
+                            <img src="{{ stadium.logo.url }}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;"> 
+                            <p class="text-center">Название стадиона: {{stadium.name}}</p> 
+                            <span style="text-align: justify; text-indent: 1.5em;">{{stadium.content|safe}}</span>
+                        </span>
+                    </div> 
+                    <div class="col-6 mr-2">
+                        <h6 class="fw-bold mt-0 mb-1 text-center">Список<span class="text-muted text-success"> характеристик:</span></h6>
+                        <span> 
+                            <ul class="category-list">
+                                <li><a href="">Расположение</a><span>{{stadium.location}}</span></li>
+                                <li><a href="">Вместительность</a><span>{{stadium.capacity}}</span></li>
+                                <li><a href="">Построен и открыт</a><span>{{stadium.created}}</span></li>
+                                <li><a href="">Клуб-владелец</a><span>{{stadium.club}}</span></li>
+                            </ul>
+                        </span>
+                        <h5 class="text-center">Памятные матчи</h5>
+                        <span style="text-align: justify; text-indent: 1.5em;">{{stadium.bestgames|safe}}</span>
+                    </div>
+                </div>
+        {% endblock %}
+    </body>
 </html>

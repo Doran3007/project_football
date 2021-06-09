@@ -16,27 +16,25 @@
         <div class="row mt--2 justify-content-between">
             <div class="col-6"> 
                 <span class="text-center">
-                    <img src="{{ trophy.logo.url }}" style="max-height: 700px; width:700px; margin: 5px;">
+                    <img src="{{ trophy.logo.url }}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;">
                     <p class="text-center">Кубок: {{trophy.name}}</p> 
-                    {{trophy.content|linebreaks}}
+                    <span style="text-align: justify; text-indent: 1.5em;">{{trophy.content|safe}}</span>
+                    <p style="text-align: justify;">Наиболее титулован: {{trophy.recordsman}}</p>
+
                 </span>
             </div> 
-            <div class="col-6">
-                <span><p class="list-unstyled">{{trophy.winers|linebreaks}}</p>
+            <div class="col-6 mr-2">
+                <h6 class="fw-bold mt-0 mb-1 text-center">Список<span class="text-muted text-success"> победителей:</span></h6>
+                <span> <ul class="category-list">{{trophy.winers|safe}}</ul>
                 {% if  trophy.actual_owner in 'Челси' %}
-                <img src="{% static 'image\trophy\chelsea_uefa.png.jpg' %}" style="max-height: 700px; width:700px; margin: 5px;">
+                <img src="{% static 'image\trophy\chelsea_uefa.png.jpg' %}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;">
                 {% else %}
-                <img src="{% static 'image\trophy\villareal.png' %}" style="max-height: 700px; width:700px; margin: 5px;">
+                <img src="{% static 'image\trophy\villareal.png' %}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;">
                 {% endif %}
                 <p class="text-center">Действующий обладатель: {{trophy.actual_owner}}</p> 
-                <p class="text-center">Наиболее титулован: {{trophy.recordsman}}</p>
             </span>
             </div>
         </div>
-        <div class="row">
-            <div>
-            </div>
-        </div> 
     </div>
     {% endblock %}
 </body>

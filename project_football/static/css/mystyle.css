@@ -484,7 +484,7 @@ body{
 /* style for list-winers trophy */
 .category-list * {transition: .4s linear;}
 .category-list {
-  background: white;
+  background: inherit;
   list-style-type: circle;
   list-style-position: inside;
   padding: 0 5px;
@@ -595,3 +595,15 @@ body{
 	margin-left: 10px;
 }
 /* end style for slider */
+
+/* style for conteiner on index.html */
+.outer_cont{
+	display: flex; 
+}
+.inner_cont{
+    margin: auto;
+}
+.standart_text{
+	text-align: justify; 
+	text-indent: 1.5em;
+}

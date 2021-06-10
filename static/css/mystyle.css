@@ -143,7 +143,7 @@ body{
     background: var(--danger-color);
     border-radius: 5px;
 }
-.dropdown {
+/* .dropdown {
     position: relative;
 }
 
@@ -228,7 +228,7 @@ body{
 .notification-menu{
     min-width: 380px;
 
-}
+} */
 .overlay-scrollbar::-webkit-scrollbar{
     width: 9px;
     height: 9px;
@@ -487,17 +487,17 @@ body{
   background: white;
   list-style-type: circle;
   list-style-position: inside;
-  padding: 0 10px;
+  padding: 0 5px;
   margin: 0;
 }
 .category-list li {
   font-family: "Trebuchet MS", "Lucida Sans";
   border-bottom: 1px solid #efefef;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 .category-list a {
   text-decoration: none;
-  color: #555;
+  color: rgb(55, 5, 5);
 }
 .category-list li span {
   float: right;
@@ -505,7 +505,7 @@ body{
   border: 1px solid #efefef;
   padding: 0 5px;
   font-size: 13px;
-  color: #999;
+  color: rgb(27, 169, 239);
 }
 .category-list li:hover a {color: #c93961;}
 .category-list li:hover span {
@@ -513,3 +513,87 @@ body{
   border: 1px solid #c93961;
 }
 /* end style for list-winers trophy */
+
+/* style for slider */
+.dg-container{
+	width: 100%;
+	height: 450px;
+	position: relative;
+}
+.dg-wrapper{
+	width: 481px;
+	height: 316px;
+	margin: 0 auto;
+	position: relative;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-o-perspective: 1000px;
+	-ms-perspective: 1000px;
+	perspective: 1000px;
+}
+.dg-wrapper a{
+	width: 482px;
+	height: 316px;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: transparent url(../image/browser.png) no-repeat top left;
+	box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+}
+.dg-wrapper a.dg-transition{
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.dg-wrapper a img{
+	display: block;
+	padding: 41px 0px 0px 1px;
+}
+.dg-wrapper a div{
+	font-style: italic;
+	text-align: center;
+	line-height: 50px;
+	text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+	color: #333;
+	font-size: 16px;
+	width: 100%;
+	bottom: -55px;
+	display: none;
+	position: absolute;
+}
+.dg-wrapper a.dg-center div{
+	display: block;
+}
+.dg-container nav{
+	width: 58px;
+	position: absolute;
+	z-index: 1000;
+	bottom: 40px;
+	left: 50%;
+	margin-left: -29px;
+}
+.dg-container nav span{
+	text-indent: -9000px;
+	float: left;
+	cursor:pointer;
+	width: 24px;
+	height: 25px;
+	opacity: 0.8;
+	background: transparent url(../image/arrows.png) no-repeat top left;
+}
+.dg-container nav span:hover{
+	opacity: 1;
+}
+.dg-container nav span.dg-next{
+	background-position: top right;
+	margin-left: 10px;
+}
+/* end style for slider */

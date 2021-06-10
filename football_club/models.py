@@ -33,6 +33,8 @@ class Club(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     content = models.TextField(blank=True, verbose_name="Текст", null=True)
     trophylist = models.TextField(blank=True, verbose_name="Достижения", null=True)
+    teams_photo = models.ImageField(null=True, blank=True)
+
 
 
 

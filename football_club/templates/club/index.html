@@ -1,23 +1,92 @@
 {% extends 'base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
     {% block title %}
         Football clubs
     {% endblock %}
 </head>
 <body>
     {% block body %}
-    <h1>Football clubs</h1>
-        <ul>
-            {% for c in clubs %}
-                <li><img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
-                    <a href="{{ c.get_absolute_url }}">{{c.name}}</a>
-                </li>
-                    <!-- ({{c.name}}, {{c.league}})</li> -->
-            {% endfor %}
-        </ul>
+    <div class="container-fluid">
+        <h1 class="text-center text-danger" style="font-family: 'Roboto' sans-serif;">Команды</h1>
+        <!-- bootstrap slider -->
+        <!-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-height: 500px; max-width: 500px; align-items: center;">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    {% for c in clubs %}
+                        {% if c.name == "Liverpool FC" %}
+                        <img src="{{ c.teams_photo.url }}" style="max-height: 400px; width:400px; margin: 5px;" class="d-block w-100" alt="...">
+                        <div><a href="{{ c.get_absolute_url }}">{{c.name}}</a></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% for c in clubs %}
+                <div class="carousel-item" style="align-items: center;">
+                    <img src="{{ c.teams_photo.url }}" style="max-height: 400px; width:400px; margin: 5px;" class="d-block w-100" alt="...">
+                    <div><a href="{{ c.get_absolute_url }}">{{c.name}}</a></div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+            </div> -->
+        <section id="dg-container" class="dg-container">
+            <div class="dg-wrapper">
+                {% for c in clubs %}
+                    <a href="{{ c.get_absolute_url }}"><img src="{{ c.teams_photo.url }}" style="max-height: 320px; max-width:440px;"><div>{{c.name}}</div></a>
+                {% endfor %}
+            </div>
+            <nav>	
+                <span class="dg-prev">&lt;</span>
+                <span class="dg-next">&gt;</span>
+            </nav>
+        </section>
+        <!-- content -->
+        <div class="row">
+            <h4>Про АПЛ</h4>
+            <div class="col-7">
+
+            </div>
+        </div>
+        <div class="row">
+            <h4>Победители АПЛ</h4>
+            <div class="col-7 order-last">
+
+            </div>
+        </div>
+        <div class="row">
+            <h4>Рекорды АПЛ</h4>
+            <div class="col-7">
+
+            </div>
+        </div>
+        <div class="row">
+            <h4>Яркие противостояния</h4>
+            <div class="col-7">
+
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.gallery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/modernizr.custom.53451.js' %}"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#dg-container').gallery();
+            });
+        </script>
+    </div>
     {% endblock %}
 </body>
 </html>

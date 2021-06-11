@@ -14,6 +14,7 @@
 <body>
     {% block body %}
     <div class="container-fluid">
+
     </br>
         <h1 class="text-center text-danger" style="font-family: 'Roboto' sans-serif;">Premier League</h1>
     </br>
@@ -44,20 +45,22 @@
             <span class="visually-hidden">Next</span>
             </button>
             </div> -->
-        <section id="dg-container" class="dg-container">
-            <div class="dg-wrapper">
-                {% for c in clubs %}
-                    <a href="{{ c.get_absolute_url }}"><img src="{{ c.teams_photo.url }}" style="max-height: 320px; max-width:440px;"><div>{{c.name}}</div></a>
-                {% endfor %}
-            </div>
-            <nav>	
-                <span class="dg-prev">&lt;</span>
-                <span class="dg-next">&gt;</span>
-            </nav>
-        </section>
+        <div class="row outer_cont"> 
+            <section id="dg-container" class="dg-container">
+                <div class="dg-wrapper">
+                    {% for c in clubs %}
+                        <a href="{{ c.get_absolute_url }}"><img src="{{ c.teams_photo.url }}" style="max-height: 320px; max-width:440px;"><div>{{c.name}}</div></a>
+                    {% endfor %}
+                </div>
+                <nav>	
+                    <span class="dg-prev">&lt;</span>
+                    <span class="dg-next">&gt;</span>
+                </nav>
+            </section>
+        </div>
         <!-- content -->
-        <div class="row outer_cont" style="background-color: bisque;">
-            <div class="col-7 inner_cont" style="margin: auto;" >
+        <div class="row outer_cont_s">
+            <div class="col-7" style="margin: auto;" >
                 <p class="standart_text" >Премье́р-ли́га (англ. Premier League) — профессиональная футбольная лига для английских футбольных клубов 
                     (также в ней могут играть некоторые клубы из Уэльса). Является высшим дивизионом в системе футбольных лиг Англии. 
                     В ней выступают 20 клубов. Чемпионат проходит с августа по май, каждая команда проводит 38 матчей. 
@@ -73,14 +76,14 @@
                     является лучшим национальным чемпионатом в Европе.                    
                     </p>
             </div>
-            <div class="col-5 order-last">
-                <img src="{% static 'image\index\football-player-pop-art.png' %}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;">
+            <div class="col-4 order-last" style="margin: auto;">
+                <img src="{% static 'image\index\football-player-pop-art.png' %}" class = "img-fluid" style="max-height: 400px; margin: 5px;">
             </div>
         </div>
-        <div class="row" style="vertical-align:middle; background-color:wheat">
-            <div class="col-7 order-last" style="vertical-align:middle;">
-                <p class="standart_text"> В Премьер-лиге выступало 45 различных клубов, но лишь 7 из них выигрывали чемпионский титул:</p>
-                <ul class="category-list">
+        <div class="row outer_cont">
+            <div class="col-4 order-last" style= "margin: auto;">
+                <h6 class="text-center"> Из 45 клубов, только 7 выигрывали чемпионский титул:</h6>
+                <ul class="my-list">
                     <li><a href="#">«Манчестер Юнайтед»</a><span>13</span></li>
                     <li><a href="#">«Манчестер Сити»</a><span>5</span></li>
                     <li><a href="#">«Челси»</a><span>5</span></li>
@@ -90,43 +93,50 @@
                     <li><a href="#">«Ливерпуль»</a><span>1</span></li>						
                 </ul>
             </div>
-            <div class="col-5">
-                <img src="{% static 'image\index\Premier_League_Logo.png' %}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;">
+            <div class="col-8 order-first" style="margin: auto;">
+                <img src="{% static 'image\index\Premier_League_Logo.png' %}" class = "img-fluid" style="max-height: 400px;max-width: 400px; margin: 5px;">
             </div>
         </div>
-        <div class="row" style="vertical-align:middle; background-color:wheat">
-            <div class="col-9" style="vertical-align:middle;">
-                <p class="standart_text"> В Премьер-лиге выступало 45 различных клубов, но лишь 7 из них выигрывали чемпионский титул:</p>
-                <ul class="category-list">
-                    <li><a href="#">Наибольшее количество побед в сезоне (38-матчевый сезон):</a><span>32, «Манчестер Сити» (2017/18), «Ливерпуль» (2019/20)</span></li>
-                    <li><a href="#">Наименьшее количество поражений в сезоне (38-матчевый сезон):</a><span>0, «Арсенал» (2003/04)</span></li>
-                    <li><a href="#">Наибольшее количество очков, набранных по итогам сезона (38-и или 42-матчевый сезон):</a><span>100, «Манчестер Сити» (2017/18)</span></li>
-                    <li><a href="#">Наименьшее количество очков, набранных по итогам сезона (38-матчевый сезон):</a><span>11, «Дерби Каунти» (2007/08)</span></li>
+        <div class="row outer_cont_s">
+            <div class="col-9" style="margin: auto;">
+                <h6 class="text-center"> Рекорды:</h6>
+                <ul class="my-list">
+                    <li><a href="#">Наибольшее количество побед в сезоне:</a><span>32, «Манчестер Сити» (2017/18), «Ливерпуль» (2019/20)</span></li>
+                    <li><a href="#">Наименьшее количество поражений в сезоне:</a><span>0, «Арсенал» (2003/04)</span></li>
+                    <li><a href="#">Наибольшее количество очков, набранных по итогам сезона:</a><span>100, «Манчестер Сити» (2017/18)</span></li>
+                    <li><a href="#">Наименьшее количество очков, набранных по итогам сезона:</a><span>11, «Дерби Каунти» (2007/08)</span></li>
                     <li><a href="#">Наибольшее количество голов, забитых командой в сезоне:</a><span>106, «Манчестер Сити» (сезон 2017/18)</span></li>
-                    <li><a href="#">Наибольшее количество пропущенных мячей в сезоне (42-матчевый сезон):</a><span>100, «Суиндон Таун» (сезон 1993/94)</span></li>						
-                    <li><a href="#">Наибольшее количество пропущенных мячей в сезоне (38-матчевый сезон):</a><span>89, «Дерби Каунти» (сезон 2007/08)</span></li>
+                    <li><a href="#">Наибольшее количество пропущенных мячей в сезоне:</a><span>89, «Дерби Каунти» (сезон 2007/08)</span></li>
                     <li><a href="#">Наименьшее количество пропущенных мячей в сезоне:</a><span>15, «Челси» (сезон 2004/05)</span></li>						
-                    <li><a href="#">Наибольшее количество побед подряд:</a><span>18,«Манчестер Сити» (26 августа – 27 декабря 2017 года)
-                        «Ливерпуль» (27 октября 2019 года – 24 февраля 2020 года)</span></li>						
+                    <li><a href="#">Наибольшее количество побед подряд:</a><span>18,«Манчестер Сити», «Ливерпуль»</span></li>						
                     <li><a href="#">Самая крупная домашняя победа:</a><span>9:0, «Манчестер Юнайтед» против «Саутгемптона» (2 февраля 2021 года)</span></li>						
                     <li><a href="#">Самая крупная победа на выезде:</a><span>0:9, «Саутгемптон» против «Лестер Сити» (25 октября 2019 года)</span></li>						
                     <li><a href="#">Самый крупный счёт:</a><span>7:4 «Портсмут» против «Рединга» (29 сентября 2007 года)</span></li>						
-                    <li><a href="#">Наибольшее количество золотых медалей Премьер-лиги:</a><span>Райан Гиггз (13) — 1993, 1994, 1996, 1997, 1999, 2000, 2001, 2003, 2007, 2008, 2009, 2011, 2013</span></li>						
-                    <li><a href="#">Самая высокая посещаемость в матче Премьер-лиги:</a><span>83 222, «Тоттенхэм Хотспур» против «Арсенала», (стадион «Уэмбли», 10 февраля 2018 года)</span></li>						
-                    <li><a href="#">Наибольшее количество «сухих матчей» в сезоне:</a><span>24, Петр Чех (вратарь «Челси», сезон 2004/05)</span></li>						
-                    <li><a href="#">Наибольшее количество «сухих матчей» в Премьер-лиге (все сезоны):</a><span>201, Петр Чех</span></li>						
-                    <li><a href="#">Наибольшее количество «сухих матчей» за один клуб (Челси) в Премьер-лиге (все сезоны):</a><span>150, Петр Чех</span></li>						
-
+                    <li><a href="#">Наибольшее количество золотых медалей Премьер-лиги:</a><span>Райан Гиггз (13 раз) </span></li>						
+                    <li><a href="#">Самая высокая посещаемость в матче Премьер-лиги:</a><span>83 222, «Тоттенхэм Хотспур» vs «Арсенала», (стадион «Уэмбли», 10/02/2018)</span></li>						
+                    <li><a href="#">Наибольшее количество «сухих матчей» в сезоне:</a><span>24, Петр Чех («Челси», сезон 2004/05)</span></li>						
                 </ul>
             </div>
-            <div class="col-3 order-last">
-                <img src="{% static 'image\index\football-player.png' %}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;">
+            <div class="col-3 order-last" style="margin: auto;">
+                <img src="{% static 'image\index\football-player.png' %}" class = "img-fluid" style="max-height: 400px; margin: 5px;">
             </div>
         </div>
-        <div class="row">
-            <h4>Яркие противостояния</h4>
-            <div class="col-7">
-
+        <div class="row outer_cont">
+            <div class="col-9" style="margin: auto;">
+                <h6 class="text-center"> Лучшие матчи:</h6>
+                <ul class="my-list">
+                    <li><a href="#">«Ливерпуль» vs «Арсенал», 4:4</a><span>21/04/2009</span></li>
+                    <li><a href="#">«Ливерпуль» vs «Ньюкасл», 4:3</a><span>03/04/1996</span></li>
+                    <li><a href="#">«Портсмут» vs «Рединг», 7:4</a><span>29/09/2007</span></li>
+                    <li><a href="#">«Манчестер Юнайтед» vs «Болтон», 4:0</a><span>16/08/2003</span></li>
+                    <li><a href="#">«Манчестер Сити» vs «Куинз Парк Рейнджерс», 3:2</a><span>13/05/2012</span></li>
+                    <li><a href="#">«Манчестер Сити» vs «Лестер», 1:3</a><span>06/02/2016</span></li>
+                    <li><a href="#">«Ньюкасл» vs «Арсенал», 4:4</a><span>05/02/2011</span></li>						
+                    <li><a href="#">«Ливерпуль» vs «Манчестер Сити», 3:1</a><span>10/11/2019</span></li>											
+                </ul>
+            </div>
+            <div class="col-3 order-first" style="margin: auto;">
+                <img src="{% static 'image\index\fifa-world-cup-football-poster.png' %}" class = "img-fluid" style="max-height: 400px; margin: 5px;">
             </div>
         </div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

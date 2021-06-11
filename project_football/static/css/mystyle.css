@@ -519,11 +519,12 @@ body{
 	width: 100%;
 	height: 450px;
 	position: relative;
+	display: flex;
 }
 .dg-wrapper{
 	width: 441px;
 	height: 255px;
-	margin: 0 auto;
+	margin: auto;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
@@ -574,7 +575,7 @@ body{
 	width: 58px;
 	position: absolute;
 	z-index: 1000;
-	bottom: 40px;
+	bottom: 20px;
 	left: 50%;
 	margin-left: -29px;
 }
@@ -598,12 +599,56 @@ body{
 
 /* style for conteiner on index.html */
 .outer_cont{
-	display: flex; 
+	display: flex;
+	height: 450px;
+	width: 100%;
+	background: whitesmoke;
+}
+.outer_cont_s{
+	display: flex;
+	height: 450px;
+	width: 100%;
+	background:#DCDCDC;
 }
 .inner_cont{
     margin: auto;
+	width: 100%;
 }
 .standart_text{
-	text-align: justify; 
+	text-align: justify;
 	text-indent: 1.5em;
 }
+
+/* style for list-winers trophy */
+.my-list * {transition: .4s linear;}
+.my-list {
+  background: inherit;
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0 5px;
+  margin: 0;
+}
+.my-list li {
+  font-family: "Montserrat";
+  font-weight: 300;
+  border-bottom: 1px solid #ec8d8de4;
+  padding: 2px 0;
+}
+.my-list a {
+  text-decoration: none;
+  color: rgb(17, 2, 2);
+  font-size: 14px;
+}
+.my-list li span {
+  float: right;
+  display: inline-block;
+  padding: 0 2px;
+  font-size: 14px;
+  color: rgb(10, 43, 60);
+}
+.my-list li:hover a {color: #c93961;}
+.my-list li:hover span {
+  color: #c93961;
+  border: 1px solid #c93961;
+}
+/* end style for list-winers trophy */

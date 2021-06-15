@@ -6,7 +6,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"> <img src="{% static 'image\index\Premier_League_Logo.png' %}" class = "img-fluid" style="max-height: 150px; width: 150px; margin: 5px;">
+      <a class="navbar-brand" href="/"> <img src="{% static 'image\index\Premier_League_Logo.png' %}" class = "img-fluid" style="max-height: 80px; width: 100px; margin: 5px;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,17 +14,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Главная страница</a>
+            <a class="nav-link active" aria-current="page" href="/"> <i class="fas fa-home"></i> Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'football_club:staff_list' %}">Известные личности</a>
+            <a class="nav-link" href="{% url 'football_club:staff_list' %}"><i class="fas fa-user-circle"></i> Известные личности</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'football_stat:dash' %}">Статистика</a>
+            <a class="nav-link" href="{% url 'football_stat:dash' %}"> <i class="fas fa-clipboard-list"></i> Статистика</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Стадионы
+              <i class="fab fa-hive"></i> Стадионы
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% stadium_list %}
@@ -32,12 +32,18 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Кубки
+              <i class="fas fa-trophy"></i> Кубки
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% trophy_list %}
+               {% trophy_list %}
             </ul>
           </li>
+          <li class="nav-item mode">
+            <a class="nav-link text-align: right" href="#" onclick="switchTheme()">
+                <i class="fas fa-moon dark-icon"></i>
+                <i class="fas fa-sun light-icon"></i>
+            </a>
+        </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -46,3 +52,4 @@
       </div>
     </div>
   </nav>
+  <script src="{% static 'js/index.js' %}"></script>

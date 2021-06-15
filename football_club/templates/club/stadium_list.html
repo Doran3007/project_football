@@ -1,7 +1,7 @@
-
+{% load static %}
 <ul>
     {% for s in stadium %}
-    <a class="dropdown-item" href="{{ s.get_absolute_url }}">{{s.name}}</a>
+    <a class="dropdown-item" href="{{ s.get_absolute_url }}"><i class="fas fa-kaaba"></i> {{s.name}}</a>
     {% endfor %}
 </ul>
 

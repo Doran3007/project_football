@@ -16,7 +16,7 @@
     <div class="container-fluid">
 
     </br>
-        <h1 class="text-center text-danger" style="font-family: 'Roboto' sans-serif;">Premier League</h1>
+        <h1 class="text-center my-text" style="font-family: 'Roboto' sans-serif;">Premier League</h1>
     </br>
         <!-- bootstrap slider -->
         <!-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-height: 500px; max-width: 500px; align-items: center;">
@@ -45,11 +45,11 @@
             <span class="visually-hidden">Next</span>
             </button>
             </div> -->
-        <div class="row outer_cont"> 
+        <div class="outer_cont"> 
             <section id="dg-container" class="dg-container">
                 <div class="dg-wrapper">
                     {% for c in clubs %}
-                        <a href="{{ c.get_absolute_url }}"><img src="{{ c.teams_photo.url }}" style="max-height: 320px; max-width:440px;"><div>{{c.name}}</div></a>
+                        <a href="{{ c.get_absolute_url }}"><img src="{{ c.teams_photo.url }}" style="max-height: 320px; max-width:440px;"><div clss = "my-text">{{c.name}}</div></a>
                     {% endfor %}
                 </div>
                 <nav>	
@@ -59,15 +59,15 @@
             </section>
         </div>
         <!-- content -->
-        <div class="row outer_cont_s">
+        <div class="outer_cont_s">
             <div class="col-7" style="margin: auto;" >
-                <p class="standart_text" >Премье́р-ли́га (англ. Premier League) — профессиональная футбольная лига для английских футбольных клубов 
+                <p class="standart_text my-text" >Премье́р-ли́га (англ. Premier League) — профессиональная футбольная лига для английских футбольных клубов 
                     (также в ней могут играть некоторые клубы из Уэльса). Является высшим дивизионом в системе футбольных лиг Англии. 
                     В ней выступают 20 клубов. Чемпионат проходит с августа по май, каждая команда проводит 38 матчей. 
                     До 2016 года турнир официально назывался Премьер-лига Barclays (англ. Barclays Premier League), с 2016 года турнир 
                     не имеет главного спонсора. За пределами Англии турнир часто называют «английской Премьер-лигой» (English Premier League).
                 </p>
-                <p class="standart_text">Турнир был основан 20 февраля 1992 года под названием «Премьер-лига Футбольной ассоциации» (англ. FA Premier League) после того,
+                <p class="standart_text my-text">Турнир был основан 20 февраля 1992 года под названием «Премьер-лига Футбольной ассоциации» (англ. FA Premier League) после того,
                     как клубы Первого дивизиона приняли решение о выходе из Футбольной лиги, основанной в 1888 году, с целью получения большей 
                     финансовой выгоды, в первую очередь за счёт получения большей прибыли от продажи прав на телевизионные трансляции. 
                     С тех пор Премьер-лига стала самым популярным спортивным чемпионатом в мире. 
@@ -77,12 +77,12 @@
                     </p>
             </div>
             <div class="col-4 order-last" style="margin: auto;">
-                <img src="{% static 'image\index\football-player-pop-art.png' %}" class = "img-fluid" style="max-height: 400px; margin: 5px;">
+                <img src="{% static 'image\index\kick1.png' %}" class = "img-fluid my-img" style="max-height: 400px;">
             </div>
         </div>
-        <div class="row outer_cont">
+        <div class="outer_cont">
             <div class="col-4 order-last" style= "margin: auto;">
-                <h6 class="text-center"> Из 45 клубов, только 7 выигрывали чемпионский титул:</h6>
+                <h6 class="text-center my-text"> Из 45 клубов, только 7 выигрывали чемпионский титул:</h6>
                 <ul class="my-list">
                     <li><a href="#">«Манчестер Юнайтед»</a><span>13</span></li>
                     <li><a href="#">«Манчестер Сити»</a><span>5</span></li>
@@ -93,13 +93,13 @@
                     <li><a href="#">«Ливерпуль»</a><span>1</span></li>						
                 </ul>
             </div>
-            <div class="col-8 order-first" style="margin: auto;">
-                <img src="{% static 'image\index\Premier_League_Logo.png' %}" class = "img-fluid" style="max-height: 400px;max-width: 400px; margin: 5px;">
+            <div class="col-4 order-first text-center" style="margin: auto;">
+                <img src="{% static 'image\index\efl-cup.png' %}" class = "img-fluid my-img" style="max-height: 400px;max-width: 400px;">
             </div>
         </div>
-        <div class="row outer_cont_s">
+        <div class="outer_cont_s">
             <div class="col-9" style="margin: auto;">
-                <h6 class="text-center"> Рекорды:</h6>
+                <h6 class="text-center my-text"> Рекорды:</h6>
                 <ul class="my-list">
                     <li><a href="#">Наибольшее количество побед в сезоне:</a><span>32, «Манчестер Сити» (2017/18), «Ливерпуль» (2019/20)</span></li>
                     <li><a href="#">Наименьшее количество поражений в сезоне:</a><span>0, «Арсенал» (2003/04)</span></li>
@@ -118,12 +118,12 @@
                 </ul>
             </div>
             <div class="col-3 order-last" style="margin: auto;">
-                <img src="{% static 'image\index\football-player.png' %}" class = "img-fluid" style="max-height: 400px; margin: 5px;">
+                <img src="{% static 'image\index\football-player-pop-art.png' %}" class = "img-fluid my-img" style="max-height: 400px;">
             </div>
         </div>
-        <div class="row outer_cont">
+        <div class="outer_cont">
             <div class="col-9" style="margin: auto;">
-                <h6 class="text-center"> Лучшие матчи:</h6>
+                <h6 class="text-center my-text"> Лучшие матчи:</h6>
                 <ul class="my-list">
                     <li><a href="#">«Ливерпуль» vs «Арсенал», 4:4</a><span>21/04/2009</span></li>
                     <li><a href="#">«Ливерпуль» vs «Ньюкасл», 4:3</a><span>03/04/1996</span></li>
@@ -136,7 +136,7 @@
                 </ul>
             </div>
             <div class="col-3 order-first" style="margin: auto;">
-                <img src="{% static 'image\index\fifa-world-cup-football-poster.png' %}" class = "img-fluid" style="max-height: 400px; margin: 5px;">
+                <img src="{% static 'image\index\players.png' %}" class = "my-img img-fluid" style="max-height: 400px;">
             </div>
         </div>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

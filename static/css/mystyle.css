@@ -484,7 +484,7 @@ body{
 /* style for list-winers trophy */
 .category-list * {transition: .4s linear;}
 .category-list {
-  background: white;
+  background: inherit;
   list-style-type: circle;
   list-style-position: inside;
   padding: 0 5px;
@@ -519,11 +519,12 @@ body{
 	width: 100%;
 	height: 450px;
 	position: relative;
+	display: flex;
 }
 .dg-wrapper{
-	width: 481px;
-	height: 316px;
-	margin: 0 auto;
+	width: 441px;
+	height: 255px;
+	margin: auto;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
@@ -537,13 +538,11 @@ body{
 	perspective: 1000px;
 }
 .dg-wrapper a{
-	width: 482px;
-	height: 316px;
+	width: 442px;
+	height: 255px;
 	display: block;
 	position: absolute;
-	left: 0;
-	top: 0;
-	background: transparent url(../image/browser.png) no-repeat top left;
+	/* background: transparent url(/static/image/browser.jpg) no-repeat top left; */
 	box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
 }
 .dg-wrapper a.dg-transition{
@@ -555,7 +554,7 @@ body{
 }
 .dg-wrapper a img{
 	display: block;
-	padding: 41px 0px 0px 1px;
+	padding: 5px 2px 2px 5px;
 }
 .dg-wrapper a div{
 	font-style: italic;
@@ -576,7 +575,7 @@ body{
 	width: 58px;
 	position: absolute;
 	z-index: 1000;
-	bottom: 40px;
+	bottom: 20px;
 	left: 50%;
 	margin-left: -29px;
 }
@@ -587,7 +586,7 @@ body{
 	width: 24px;
 	height: 25px;
 	opacity: 0.8;
-	background: transparent url(../image/arrows.png) no-repeat top left;
+	background: transparent url(/static/image/arrows.png) no-repeat top left;
 }
 .dg-container nav span:hover{
 	opacity: 1;
@@ -597,3 +596,63 @@ body{
 	margin-left: 10px;
 }
 /* end style for slider */
+
+/* style for conteiner on index.html */
+.outer_cont{
+	display: flex;
+	height: 450px;
+	width: 100%;
+	background: var(--main-bg-color);
+}
+.outer_cont_s{
+	display: flex;
+	height: 450px;
+	width: 100%;
+	background:var(--second-bg-color);
+}
+.inner_cont{
+    margin: auto;
+	width: 100%;
+}
+.standart_text{
+	text-align: justify;
+	text-indent: 1.5em;
+}
+.my-img{
+	margin: 5px; 
+	filter: grayscale(75%) sepia(50%) blur(0.6px);
+	opacity: 0.7
+}	
+/* style for list-winers trophy */
+.my-list * {transition: .4s linear;}
+.my-list {
+  background: inherit;
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0 5px;
+  margin: 0;
+}
+.my-list li {
+  font-family: "Montserrat";
+  font-weight: 300;
+  border-bottom: 1px solid #ec8d8de4;
+  padding: 2px 0;
+}
+.my-list a {
+  text-decoration: none;
+  color: rgb(17, 2, 2);
+  font-size: 14px;
+}
+.my-list li span {
+  float: right;
+  display: inline-block;
+  padding: 0 2px;
+  font-size: 14px;
+  color: rgb(10, 43, 60);
+}
+.my-list li:hover a {color: #c93961;}
+.my-list li:hover span {
+  color: #c93961;
+  border: 1px solid #c93961;
+}
+/* end style for list-winers trophy */

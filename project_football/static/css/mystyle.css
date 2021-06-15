@@ -78,7 +78,7 @@ body{
 	background-color: var(--main-bg-color)!important;
 	fill: var(--main-color);
 }
-.navbar-main{
+/* .navbar-main{
     display: flex;
     flex-direction: row;
     background: var(--main-bg-color);
@@ -88,11 +88,11 @@ body{
     right: 0;
     left: 0;
     z-index: 101;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 4px 1px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 4px 1px; */
 }
 .navbar-nav{
     list-style: none;
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     padding-left: 0;
     margin-bottom: 0;
@@ -256,86 +256,6 @@ body{
 	background: var(--main-bg-color);
 	transition: margin-left .5s;
 }
-.sidebar{
-    width: 82px;
-    height: 100vh;
-    position: fixed;
-    margin-top: 62px;
-    background: var(--main-bg-color);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 4px 1px;
-    overflow:hidden;
-    z-index: 101;
-    transition: width .5s;
-    left: 0;
-}
-.sidebar:hover {
-	width: 250px;
-}
-
-.sidebar-nav {
-	list-style: none;
-	padding: 0px;
-	margin: 0px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 100vh;
-}
-
-.sidebar-nav-item {
-	width: 100%;
-}
-
-.sidebar-nav-link {
-	display: flex;
-	align-items: center;
-	color: var(--main-color);
-	text-decoration: none;
-	white-space: nowrap;
-}
-
-.sidebar-nav-link i {
-	font-size: 1.5rem;
-	color: var(--second-color);
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.sidebar-nav-link div {
-	min-width: 82px;
-	height: 50px;
-	position: relative;
-    display: flex;
-}
-
-.sidebar-nav-link:hover {
-	background: var(--second-bg-color);
-}
-
-.sidebar-nav-link.active {
-	background: var(--second-bg-color);
-	color: var(--danger-color);
-}
-
-.sidebar-nav-link.active div {
-	border-left: 5px solid var(--danger-color);
-}
-
-.sidebar-nav-link.active i {
-	color: var(--danger-color);
-	margin-left: -5px;
-}
-
-.sidebar-expand .sidebar {
-	width: 250px;
-}
-
-.sidebar-expand .wrapper {
-	margin-left: 250px;
-}
-
 .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -345,45 +265,6 @@ body{
 .row:after, .row:before {
 	box-sizing: border-box;
 }
- /* для меню в сайдбаре */
-.sidebar-nav-item a .dropdown{
-    position: absolute;
-    right: 0;
-    margin: 20px;
-    transition: 0.5s;
-}
-   
-.sidebar-nav-item .sub-menu{
-    background: rgba(255, 255, 255, 0.1);
-    display: none;
-}
-   
-.sidebar-nav-item .sub-menu a{
-    padding-left: 30px;
-	padding-bottom: 5px;
-    display: block;
-    position:relative;
-    text-decoration: none;
-    list-style: none;
-	font-size: 14px;
-	white-space: nowrap;
-	color: var(--main-color);
-
-}
-.sidebar-nav-item .sub-menu a:hover {
-	background: var(--second-bg-color);
-}
-.sidebar-nav-item .sub-menu i{
-	font-size: 1rem;
-	color: var(--second-color);
-	position: relative;
-	margin-right: 5px;
-}
-
-.rotate{
-    transform: rotate(90deg);
-}
- /* конец для меню в сайдбаре */
 
 
 [class*="col-"] {
@@ -597,28 +478,6 @@ body{
 }
 /* end style for slider */
 
-/* style for conteiner on index.html */
-.outer_cont{
-	display: flex;
-	height: 450px;
-	width: 100%;
-	background: whitesmoke;
-}
-.outer_cont_s{
-	display: flex;
-	height: 450px;
-	width: 100%;
-	background:#DCDCDC;
-}
-.inner_cont{
-    margin: auto;
-	width: 100%;
-}
-.standart_text{
-	text-align: justify;
-	text-indent: 1.5em;
-}
-
 /* style for list-winers trophy */
 .my-list * {transition: .4s linear;}
 .my-list {
@@ -636,7 +495,7 @@ body{
 }
 .my-list a {
   text-decoration: none;
-  color: rgb(17, 2, 2);
+  color: var(--main-color);
   font-size: 14px;
 }
 .my-list li span {
@@ -644,7 +503,7 @@ body{
   display: inline-block;
   padding: 0 2px;
   font-size: 14px;
-  color: rgb(10, 43, 60);
+  color: var(--second-color);
 }
 .my-list li:hover a {color: #c93961;}
 .my-list li:hover span {
@@ -652,3 +511,33 @@ body{
   border: 1px solid #c93961;
 }
 /* end style for list-winers trophy */
+
+/* style for conteiner on index.html */
+.outer_cont{
+	display: flex;
+	height: 450px;
+	width: 100%;
+	background: var(--main-bg-color);
+}
+.outer_cont_s{
+	display: flex;
+	height: 450px;
+	width: 100%;
+	background:var(--second-bg-color);
+}
+.inner_cont{
+    margin: auto;
+	width: 100%;
+}
+.standart_text{
+	text-align: justify;
+	text-indent: 1.5em;
+}
+.my-img{
+	margin: 5px; 
+	filter: grayscale(75%) sepia(50%) blur(0.6px);
+	opacity: 0.7
+}
+.my-text{
+	color: var(--main-color);
+}	

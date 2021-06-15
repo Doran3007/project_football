@@ -1,5 +1,5 @@
 <ul>
     {% for t in trophy %}
-    <a class="dropdown-item" href="{{ t.get_absolute_url }}">{{t.name}}</a>
+    <a class="dropdown-item" style="margin-left:0" href="{{ t.get_absolute_url }}"><i class="fas fa-medal"></i> {{t.name}}  </a>
     {% endfor %}
 </ul>

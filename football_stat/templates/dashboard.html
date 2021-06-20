@@ -21,36 +21,36 @@
     <Body>
         {% block body %}
         <div class="container-fluid"> 
-            <h3 class="text-center">Сезон <small class="text-muted">{{startSeason}}/{{endtSeason}}</small></h3>
+            <h3 class="text-center my-text">Сезон <small class="text-muted my_text_sec_col">{{startSeason}}/{{endtSeason}}</small></h3>
             <div class="row mt--2">
                 <div class="col-md-6">
                     <div class="card full-height">
-                        <div class="card-body">
-                            <div class="card-category text-center"><h6>Показатели</h6></div>
+                        <div class="card-body my-card-body">
+                            <div class="card-category text-center my-text"><h6>Показатели</h6></div>
                             <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
                                 <div class="px-2 pb-2 pb-md-0 text-center">
                                     <div id="circles-1"></div>
-                                    <h6 class="fw-bold mt-3 mb-0">Забитые голы<p class="text-muted">{{mostgoalforteam}}</p></h6>
+                                    <h6 class="fw-bold mt-3 mb-0 my-text">Забитые голы<p class="text-muted my_text_sec_col">{{mostgoalforteam}}</p></h6>
                                 </div>
                                 <div class="px-2 pb-2 pb-md-0 text-center">
                                     <div id="circles-2"></div>
-                                    <h6 class="fw-bold mt-3 mb-0">Пропущенные голы<p class="text-muted">{{mostgoalagainstteam}}</p></h6>
+                                    <h6 class="fw-bold mt-3 mb-0 my-text">Пропущенные голы<p class="text-muted my_text_sec_col">{{mostgoalagainstteam}}</p></h6>
 
                                 </div>
                                 <div class="px-2 pb-2 pb-md-0 text-center">
                                     <div id="circles-3"></div>
-                                    <h6 class="fw-bold mt-3 mb-0">Лучшая разница<p class="text-muted">{{mostgoaldiffteam}}</p></h6>
+                                    <h6 class="fw-bold mt-3 mb-0 my-text">Лучшая разница<p class="text-muted my_text_sec_col">{{mostgoaldiffteam}}</p></h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card full-height mt-2">
-                        <div class="card-body">
-                            <div class="card-title text-center"><h5 class="fw-bold">Итоги <small class="text-muted">Премьер лиги</small></h5></div>
+                        <div class="card-body my-card-body">
+                            <div class="card-title text-center"><h5 class="fw-bold my_text_sec_col">Итоги <small class="text-muted my_text_sec_col">Премьер лиги</small></h5></div>
                                 <div class="row py-3">
                                     <div class="d-flex flex-column justify-content-around">
-                                            <h3 class="fw-bold text-uppercase text-primary op-8 text-center">Чемпион</h3>
-                                            <h5 class="fw-bold text-center">
+                                            <h3 class="fw-bold text-uppercase text-primary op-8 text-center my-text">Чемпион</h3>
+                                            <h5 class="fw-bold text-center my-text">
                                                 {% for c in club %}
                                                     {% if c.name in champion %}
                                                         <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
@@ -58,45 +58,42 @@
                                                 {% endfor %} 
                                                 {{champion}}
                                             </h5>
-                                            <h4 class="fw-bold text-uppercase text-success op-8 text-center">Наибольшее кол-во побед</h4>
-                                            <h6 class="fw-bold text-center">                                        
+                                            <h4 class="fw-bold text-uppercase text-success op-8 text-center my-text">Наибольшее кол-во побед</h4>
+                                            <h6 class="fw-bold text-center my-text">                                        
                                                 {% for c in club %}
                                                 {% if c.name in mostvictoryteam %}
                                                     <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
                                                 {% endif %}
                                                 {% endfor %}
-                                                {{mostvictoryteam}} <small class="text-muted">- {{mostvictory}} матчей</small>
+                                                {{mostvictoryteam}} <small class="text-muted my_text_sec_col">- {{mostvictory}} матчей</small>
                                             </h6>
                                             <h3 class="fw-bold text-uppercase text-danger op-8 text-center">Наибольшее кол-во поражений</h3>
-                                                <h6 class="fw-bold text-center">
+                                                <h6 class="fw-bold text-center my-text">
                                                     {% for c in club %}
                                                     {% if c.name in mostdeafetteam %}
                                                         <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
                                                     {% endif %}
                                                     {% endfor %}
-                                                    {{mostdeafetteam}} <small class="text-muted">- {{mostdeafet}} матчей</small>
+                                                    {{mostdeafetteam}} <small class="text-muted my_text_sec_col">- {{mostdeafet}} матчей</small>
                                                 </h6>
                                             <h4 class="fw-bold text-uppercase text-warning op-8 text-center">Наибольшее кол-во ничьих</h4>
-                                            <h6 class="fw-bold text-center">
+                                            <h6 class="fw-bold text-center my-text">
                                                 {% for c in club %}
                                                     {% if c.name in mostdrawteam %}
                                                         <img src="{{ c.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;">
                                                     {% endif %}
                                                 {% endfor %}
-                                                {{mostdrawteam}} <small class="text-muted">- {{mostdraw}} матчей</small>
+                                                {{mostdrawteam}} <small class="text-muted my_text_sec_col">- {{mostdraw}} матчей</small>
                                             </h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="chartdiv"></div>
+                            <div id="chartdiv" class="chartdiv"></div>
                         </div>
                 <div class="col-md-6 mt-2">
                     {{table|safe}}
                 </div>
-            </div>
-            <div>
-                Тесты
             </div>
         </div>
 
@@ -106,34 +103,16 @@
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/popper.min.js"></script>
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/core/bootstrap.min.js"></script>
 
-	<!-- jQuery UI -->
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-
 	<!-- jQuery Scrollbar -->
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 	<!-- Chart JS -->
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart.js/chart.min.js"></script>
 
-	<!-- jQuery Sparkline -->
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
 	<!-- Chart Circle -->
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart-circle/circles.min.js"></script>
 
-	<!-- Datatables -->
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/datatables/datatables.min.js"></script>
-
-	<!-- Bootstrap Notify -->
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-
-	<!-- jQuery Vector Maps -->
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
-
-	<!-- Sweet Alert -->
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/sweetalert/sweetalert.min.js"></script>
 
     <!-- cloud tag -->
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
@@ -150,7 +129,7 @@
 			maxValue:100,
 			width:7,
 			text: {{max_goal_for|safe}},
-			colors:['#f1f1f1', '#2BB930'],
+			colors:['#dcdcdc', '#2BB930'],
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',
@@ -165,7 +144,7 @@
 			maxValue:100,
 			width:7,
 			text: {{max_goal_against|safe}},
-			colors:['#f1f1f1', '#F25961'], 
+			colors:['#dcdcdc', '#F25961'], 
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',
@@ -180,7 +159,7 @@
 			maxValue:100,
 			width:7,
 			text: {{ better_diference_goal|safe }},
-			colors:['#f1f1f1', '#FF9E27'],
+			colors:['#dcdcdc', '#FF9E27'],
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',
@@ -258,8 +237,8 @@
             series.heatRules.push({
              "target": series.labels.template,
              "property": "fill",
-             "min": am4core.color("#0000CC"),
-             "max": am4core.color("#CC00CC"),
+             "min": am4core.color("#ff6347"),
+             "max": am4core.color("#ff4500"),
              "dataField": "value"
             });
             
@@ -269,14 +248,6 @@
             
             var hoverState = series.labels.template.states.create("hover");
             hoverState.properties.fill = am4core.color("#FF0000");
-            
-            var subtitle = chart.titles.create();
-            subtitle.text = "(-)";
-            
-            var title = chart.titles.create();
-            title.text = "Статистика команды";
-            title.fontSize = 18;
-            title.fontWeight = "800";
             
             }); // end am4core.ready()
             </script>

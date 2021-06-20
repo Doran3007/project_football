@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +10,32 @@
     {% endblock %}
 </head>
 <body>
-    {% block body %}
-
-        <li>
-            <img src="{{ staff.logo.url }}" style="max-height: 100px; width:50px; margin: 5px;">
-            {{staff.first_name}}  {{staff.second_name}}, {{staff.role}} {{staff.birthday}} {{staff.age}} {{staff.club}}
-        </li>
-    
-    
-    {% endblock %}
-</body>
+    <body>
+        {% block body %}
+            <div class="container-fluid">
+                <h1 class="text-center my-text">{{staff.first_name}}  {{staff.second_name}}</h1>
+                <div class="row mt--2 justify-content-between">
+                    <div class="col-6"> 
+                        <div class="text-center" style="align-items: center;">
+                            <img src="{{ staff.logo.url }}" class = "img-fluid" style="max-height: 600px; width:400px; margin: 5px;"> 
+                            <span class="my-text" style="text-align: justify; text-indent: 1.5em;">{{staff.content|safe}}</span>
+                        </div>
+                    </div> 
+                    <div class="col-6 mr-2">
+                        <h6 class="fw-bold mt-0 mb-1 text-center my-text">Общая<span class="text-muted text-success"> информация:</span></h6>
+                        <span> 
+                            <ul class="my-list">
+                                <li><a href="">Дата рождения</a><span>{{staff.birthday}}</span></li>
+                                <li><a href="">Возраст</a><span>{{staff.age}}</span></li>
+                                <li><a href="">Должность</a><span>{{staff.role}}</span></li>
+                                <li><a href="">Место работы</a><span>{{staff.club}}</span></li>
+                            </ul>
+                        </span>
+                    </br>
+                        <h6 class="fw-bold mt-0 mb-1 text-center my-text">Должностные<span class="text-muted text-success"> достижения:</span></h6>
+                        <span class= "my-list" style="text-align: justify; text-indent: 1.5em;">{{staff.trophylist|safe}}</span>
+                    </div>
+                </div>
+        {% endblock %}
+    </body>
 </html>

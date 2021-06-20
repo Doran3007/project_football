@@ -9,14 +9,33 @@
 </head>
 <body>
     {% block body %}
-    <h1>Известные личности</h1>
-    <ul>
-        {% for s in staff %}
-        <li><img src="{{ s.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
-            <a href="{{ s.get_absolute_url }}">{{s.first_name}} {{s.second_name}} {{s.role}} {{s.club}}</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container-fluid">
+        </br>
+        <h2 class="fw-bold mt-0 mb-1 text-center my-text" style="font-family: 'Roboto' sans-serif;">Известные личности
+            <span class="text-muted text-success"> Premier League:</span>
+        </h2>
+        </br>
+        <div class="wrap-grid"> 
+            {% for s in staff %}
+            <div class="staff-item">
+                <div class="staff-list">
+                <img src="{{ s.logo.url }}">
+                <h3>{{s.first_name}} {{s.second_name}}</h3>
+                    <span class="role">{{s.role}}</span>
+                    <a href="{{ s.get_absolute_url }}" class="button">Подробнее</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- <ul>
+            {% for s in staff %}
+            <li class="my-text"><img src="{{ s.logo.url }}" style="max-height: 45px; width:35px; margin: 5px;"> 
+                <a href="{{ s.get_absolute_url }}">{{s.first_name}} {{s.second_name}} {{s.role}} {{s.club}}</a>
+            </li>
+            {% endfor %}
+        </ul> -->
+    </div>
     {% endblock %}
 </body>
 </html>

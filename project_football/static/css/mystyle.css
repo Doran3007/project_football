@@ -639,3 +639,8 @@ body{
 	font-size: 16px;
 	margin: 10px;
 }
+.my-graph{
+	color: var(--second-color);
+	background: var(--second-bg-color);
+	
+}

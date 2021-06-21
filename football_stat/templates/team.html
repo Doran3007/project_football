@@ -53,8 +53,8 @@
                             <i class="fas fa-futbol"></i>
                         </div>
                         <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{free_kick_per_match_home}}</h4>
-                            <p class="stat-number-text"> Штрафные удары/матч</p>
+                            <h4 class="stat-number">{{corner_per_match_home}}</h4>
+                            <p class="stat-number-text"> Угловые/матч</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-8 stat-card-info">
                             <h4 class="stat-number">{{kick_on_target_conv_per_match_home}}</h4>
-                            <p class="stat-number-text"> Удары в створ/голы</p>
+                            <p class="stat-number-text"> Удар в створ/гол</p>
                         </div>
                     </div>
                 </div>
@@ -78,21 +78,22 @@
             <div class="col-6">
                 <div class="my-chart-card">
                     <div class="my-header-chart">
-
+                        <p class = "my-text text-center"> Забито/пропущено за матч</p>
                     </div>
                     <div class="my-stat-chart">
-                        <div></div>
+                        <div ><canvas class="my-graph" id="goal_home" width="350" height="250"></canvas>
+                        </div>
                     </div>
                 </div>
             </div> 
             <div class="col-6">
                 <div class="my-chart-card">
                     <div class="my-header-chart">
-                        <p> Среднее кол-во голов за матч дома</p>
+                        <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>
                     </div>
                     <div class="my-stat-chart">
                         <div>
-                            <canvas id="myChart" width="350" height="250"></canvas>
+                            <canvas id="myChart" class="my-graph" width="350" height="250"></canvas>
                         </div>
                     </div>
                 </div>
@@ -134,8 +135,8 @@
                             <i class="fas fa-futbol"></i>
                         </div>
                         <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{free_kick_per_match_away}}</h4>
-                            <p class="stat-number-text"> Штрафные удары/матч</p>
+                            <h4 class="stat-number">{{corner_per_match_away}}</h4>
+                            <p class="stat-number-text"> Угловые/матч</p>
                         </div>
                     </div>
                 </div>
@@ -154,9 +155,36 @@
                 </div>
             </div>
         </div>
+        <!-- строка с графиками -->
+        <div class="row">
+            <div class="col-6">
+                <div class="my-chart-card">
+                    <div class="my-header-chart">
+                        <p class = "my-text text-center"> Забито/пропущено за матч</p>
+                    </div>
+                    <div class="my-stat-chart">
+                        <div ><canvas class="my-graph" id="goal_away" width="350" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-6">
+                <div class="my-chart-card">
+                    <div class="my-header-chart">
+                        <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>
+                    </div>
+                    <div class="my-stat-chart">
+                        <div>
+                            <canvas id="realize_chanceAway" class="my-graph" width="350" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
     </div>
 	<!-- Chart JS -->
 	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart.js/chart.min.js"></script>
+    <!-- графики для игр дома -->
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -164,15 +192,15 @@
             data: {
                 labels: {{goal_label|safe}},
                 datasets: [{
-                    label: 'Голов за матч',
-                    data: {{goal_value|safe}},
+                    label: 'Реализация ударов в голы',
+                    data: {{realiz_chance|safe}},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        'rgba(255, 159, 64, 0.2)',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
@@ -194,7 +222,246 @@
             }
         });
     </script>
+    <script>
+        var ctx = document.getElementById('goal_home').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{goal_label|safe}},
+                datasets: [
+                            {
+                            label: 'Забитые голы',
+                            data: {{goal_value|safe}},
+                            borderColor: [
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',                                            
+                                        ],
+                            backgroundColor:[
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',                                            
+                                        ],
+                            },
+                            {
+                            label: 'Пропущенные',
+                            data: {{goal_away_value|safe}},
+                            borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                            backgroundColor: [
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                    ],
+                            }
+                        ],
+                    },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            },
+        });
+    </script>
+    <!-- Выездные графики -->
+    <script>
+        var ctx = document.getElementById('realize_chanceAway').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{goalaway_label|safe}},
+                datasets: [{
+                    label: 'Реализация ударов в голы',
+                    data: {{realizaway_chance|safe}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById('goal_away').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{goalaway_label|safe}},
+                datasets: [
+                            {
+                            label: 'Забитые голы',
+                            data: {{goalaway_away_value|safe}},
+                            borderColor: [
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',                                            
+                                        ],
+                            backgroundColor:[
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(75, 192, 192, 1)',                                            
+                                        ],
+                            },
+                            {
+                            label: 'Пропущенные',
+                            data: {{goalaway_value|safe}},
+                            borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                            backgroundColor: [
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                    ],
+                            }
+                        ],
+                    },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            },
+        });
+    </script>
     {% endblock %}
-
 </body>
 </html>

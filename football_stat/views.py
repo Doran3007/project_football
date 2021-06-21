@@ -166,17 +166,17 @@ def team_stat(request):
     pts_per_match_home = sum(df_match['Hwin'])
     pts_per_match_away = sum(df_match['Awin'])
     # конверсия ударов в голы
-    kick_conv_per_match_home = round((goal_per_match_home / kick_per_match_home),1)
-    kick_conv_per_match_away = round((goal_per_match_away / kick_per_match_away),1)
-    kick_conv_per_match_all = round((goal_per_match_all / kick_per_match_all),1)
+    kick_conv_per_match_home = round((kick_per_match_home / goal_per_match_home ),0)
+    kick_conv_per_match_away = round((kick_per_match_away / goal_per_match_away ),0)
+    kick_conv_per_match_all = round((kick_per_match_all / goal_per_match_all),0)
     #  конверсия ударов в створ ворот в голы
-    kick_on_target_conv_per_match_home = round((goal_per_match_home / kick_on_target_per_match_home),1)
-    kick_on_target_conv_per_match_away = round((goal_per_match_away / kick_on_target_per_match_away),1)
-    kick_on_target_conv_per_match_all = round((goal_per_match_all / kick_on_target_per_match_all),1)
+    kick_on_target_conv_per_match_home = round(( kick_on_target_per_match_home / goal_per_match_home),0)
+    kick_on_target_conv_per_match_away = round((kick_on_target_per_match_away / goal_per_match_away ),0)
+    kick_on_target_conv_per_match_all = round((kick_on_target_per_match_all/ goal_per_match_all),0)
     # конверсия стандартных положений в голы
-    free_kick_conv_per_match_home = round((goal_per_match_home / (corner_per_match_home + free_kick_per_match_home)),1)
-    free_kick_conv_per_match_away = round((goal_per_match_away / (corner_per_match_away + free_kick_per_match_away)),1)
-    free_kick_conv_per_match_all = round((goal_per_match_all / (corner_per_match_all + free_kick_per_match_all)),1)
+    free_kick_conv_per_match_home = round(((corner_per_match_home + free_kick_per_match_home) / goal_per_match_home ),0)
+    free_kick_conv_per_match_away = round(((corner_per_match_away + free_kick_per_match_away) / goal_per_match_away ),0)
+    free_kick_conv_per_match_all = round(((corner_per_match_all + free_kick_per_match_all) / goal_per_match_all ),0)
     # список команд
 
     df_goal_home = df_match.pivot_table(
@@ -188,12 +188,20 @@ def team_stat(request):
     df_goal_home.reset_index(inplace=True)
 
     df_goal_home['goal_per_match_home'] = round((df_goal_home['FTHG'] / df_goal_home['AwayTeam']),1)
+    df_goal_home['goal_per_match_away'] = round((df_goal_home['FTAG'] / df_goal_home['AwayTeam']),1)
+    df_goal_home['realiz_chance'] = round((df_goal_home['HS'] / df_goal_home['FTHG']),0)
+
+
     # df_goal_home['goal_per_match_away'] = round((df_goal_home['FTAG'] / df_goal_home['AwayTeam']),1)
     # df_goal_var = df_goal_home.drop(['FTHG','FTAG', 'HS', 'HST', 'HF', 'HC', 'HY', 'HR', 'AwayTeam'], axis='columns', inplace=True)
-    df_goal_var = df_goal_home.loc[:, ['HomeTeam','goal_per_match_home',]]
+    df_goal_var = df_goal_home.loc[:, ['HomeTeam','goal_per_match_home', 'goal_per_match_away', 'realiz_chance']]
     df_goal_var = df_goal_var.sort_values(by='goal_per_match_home', ascending=False)
     goal_label = df_goal_var['HomeTeam'].values.tolist()
     goal_value = df_goal_var['goal_per_match_home'].values.tolist()
+    goal_away_value = df_goal_var['goal_per_match_away'].values.tolist()
+    realiz_chance = df_goal_var['realiz_chance'].values.tolist()
+
+
     
     
     df_goal_away = df_match.pivot_table(
@@ -202,6 +210,20 @@ def team_stat(request):
         aggfunc = {'FTAG':'sum', 'FTHG':'sum', 'AS':'sum', 'AST':'sum', 'AF':'sum', 'AC':'sum', 'AY':'sum', 'AR':'sum', 'HomeTeam':'count'},
         margins = False
     )
+    df_goal_away.reset_index(inplace=True)
+    df_goal_away['goal_per_match_home'] = round((df_goal_away['FTHG'] / df_goal_away['HomeTeam']),1)
+    df_goal_away['goal_per_match_away'] = round((df_goal_away['FTAG'] / df_goal_away['HomeTeam']),1)
+    df_goal_away['realiz_chance'] = round((df_goal_away['AS'] / df_goal_away['FTAG']),0)
+
+
+    df_goalaway_var = df_goal_away.loc[:, ['AwayTeam','goal_per_match_home', 'goal_per_match_away', 'realiz_chance']]
+    df_goalaway_var = df_goalaway_var.sort_values(by='goal_per_match_away', ascending=False)
+    goalaway_label = df_goalaway_var['AwayTeam'].values.tolist()
+    goalaway_value = df_goalaway_var['goal_per_match_home'].values.tolist()
+    goalaway_away_value = df_goalaway_var['goal_per_match_away'].values.tolist()
+    realizaway_chance = df_goalaway_var['realiz_chance'].values.tolist()
+
+
     context = {
         'goal_per_match_home': goal_per_match_home,
         'goal_per_match_away': goal_per_match_away,
@@ -248,8 +270,17 @@ def team_stat(request):
         # список команд
         # данные модели клубы
         'club': Club.objects.order_by('name'),
+        # график для забито/пропущено дома
         'goal_label': goal_label,
-        'goal_value':goal_value
+        'goal_value':goal_value,
+        'goal_away_value':goal_away_value,
+        # график для реализация моментов дома
+        'realiz_chance':realiz_chance,
+        # графики на выезде
+        'goalaway_label':goalaway_label,
+        'goalaway_value' :goalaway_value,
+        'goalaway_away_value':goalaway_away_value,
+        'realizaway_chance':realizaway_chance,
     }
 
 

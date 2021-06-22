@@ -52,11 +52,21 @@ class ClubShow(DetailView):
     template_name = 'club/club.html'
     slug_url_kwarg = 'club_slug'
     context_object_name = 'club'
-        
-    def get_context_data(self, *, object_list=None, **kwargs):
+    
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context.update({
+            'stadium': Stadium.objects.order_by('name'),
+        })
         context['title'] = context['club']
+
         return context
+
+
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = context['club']
+    #     return context
 
 class StadiumListShow(ListView):
     model = Stadium

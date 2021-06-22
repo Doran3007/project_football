@@ -200,7 +200,7 @@ body{
 }
 
 /* Small devices >= 600px */
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
 	.col-sm-1 {width: 8.33%;}
 	.col-sm-2 {width: 16.66%;}
 	.col-sm-3 {width: 25%;}
@@ -261,7 +261,7 @@ body{
 	.col-xl-10 {width: 83.33%;}
 	.col-xl-11 {width: 91.66%;}
 	.col-xl-12 {width: 100%;}
-}
+} */
 /* style for list-winers trophy */
 .category-list * {transition: .4s linear;}
 .category-list {
@@ -616,8 +616,8 @@ body{
 /* style for statistic page */
 .stat-card{
 	background: var(--second-bg-color);
-	width: 350px;
-	height: 90px;
+	max-width: 350px;
+	max-height: 90px;
 	border-radius: 10px;
 }
 .statistic-icon{
@@ -642,5 +642,7 @@ body{
 .my-graph{
 	color: var(--second-color);
 	background: var(--second-bg-color);
+	max-width: 100%;
+	max-height: 330px;
 	
 }

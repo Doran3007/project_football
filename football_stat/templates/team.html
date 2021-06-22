@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
 
     <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     {% block title %}
@@ -18,8 +18,18 @@
     <div class="container">
         {% block body %}
             <!-- строка с карточками показатели дома -->
+        <div class = "row m-2 row-cols-12 text-center">
+            <form method="POST" enctype="multipart/form-data" action="selectTeam">
+                {% csrf_token %}
+                {% for team in goal_label %}
+                    <input type="submit" value="{{team}}" name="Team" style="width: 100px; margin: 2px;">
+                {% endfor %}
+            </form>
+        </div>
+        {% if showgeneral_stat == 'False' %}
+        <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">{{var_select_team}}</small></h5>
         <div class="row m-2"> 
-            <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">домашних матчей</small></h5>
+            <a href="{% url 'football_stat:team' %}" class="my-text text-center">Вернуться на страницу общей статистики</a>
             <div class="col-md-3">
                 <div class="stat-card">
                     <div class="row">
@@ -27,21 +37,8 @@
                             <i class="fas fa-futbol"></i>
                         </div>
                         <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{free_kick_conv_per_match_home}}</h4>
-                            <p class="stat-number-text"> Стандарты/голы</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="stat-card">
-                    <div class="row">
-                        <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
-                        </div>
-                        <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{kick_on_target_per_match_home}}</h4>
-                            <p class="stat-number-text"> Удары по воротам/матч</p>
+                            <h4 class="stat-number">{{home_kick_on_target_converse}}</h4>
+                            <p class="stat-number-text"> Дом: Удары для гола</p>
                         </div>
                     </div>
                 </div>
@@ -53,8 +50,8 @@
                             <i class="fas fa-futbol"></i>
                         </div>
                         <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{corner_per_match_home}}</h4>
-                            <p class="stat-number-text"> Угловые/матч</p>
+                            <h4 class="stat-number">{{away_kick_on_target_converse}}</h4>
+                            <p class="stat-number-text"> Выезд: Удары для гола</p>
                         </div>
                     </div>
                 </div>
@@ -66,124 +63,228 @@
                             <i class="fas fa-futbol"></i>
                         </div>
                         <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{kick_on_target_conv_per_match_home}}</h4>
-                            <p class="stat-number-text"> Удар в створ/гол</p>
+                            <h4 class="stat-number">{{home_corner_converse}}</h4>
+                            <p class="stat-number-text"> Дом: угловые для гола</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- строка с графиками -->
-        <div class="row">
-            <div class="col-6">
-                <div class="my-chart-card">
-                    <div class="my-header-chart">
-                        <p class = "my-text text-center"> Забито/пропущено за матч</p>
-                    </div>
-                    <div class="my-stat-chart">
-                        <div ><canvas class="my-graph" id="goal_home" width="350" height="250"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <div class="col-6">
-                <div class="my-chart-card">
-                    <div class="my-header-chart">
-                        <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>
-                    </div>
-                    <div class="my-stat-chart">
-                        <div>
-                            <canvas id="myChart" class="my-graph" width="350" height="250"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        </div>
-        <!-- строка с карточками показатели выезд -->
-        <div class="row m-2">
-            <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">выездных матчей</small></h5>
-            <div class="col-3">
+            <div class="col-md-3">
                 <div class="stat-card">
                     <div class="row">
                         <div class="col-4 statistic-icon">
                             <i class="fas fa-futbol"></i>
                         </div>
                         <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{free_kick_conv_per_match_away}}</h4>
-                            <p class="stat-number-text"> Стандарты/голы</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="stat-card">
-                    <div class="row">
-                        <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
-                        </div>
-                        <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{kick_on_target_per_match_away}}</h4>
-                            <p class="stat-number-text"> Удары по воротам/матч</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="stat-card">
-                    <div class="row">
-                        <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
-                        </div>
-                        <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{corner_per_match_away}}</h4>
-                            <p class="stat-number-text"> Угловые/матч</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="stat-card">
-                    <div class="row">
-                        <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
-                        </div>
-                        <div class="col-8 stat-card-info">
-                            <h4 class="stat-number">{{kick_on_target_conv_per_match_away}}</h4>
-                            <p class="stat-number-text"> Удары в створ/голы</p>
+                            <h4 class="stat-number">{{away_corner_converse}}</h4>
+                            <p class="stat-number-text"> Выезд: угловые для гола</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- строка с графиками -->
-        <div class="row">
-            <div class="col-6">
-                <div class="my-chart-card">
-                    <div class="my-header-chart">
-                        <p class = "my-text text-center"> Забито/пропущено за матч</p>
-                    </div>
-                    <div class="my-stat-chart">
-                        <div ><canvas class="my-graph" id="goal_away" width="350" height="250"></canvas>
+        {% elif showgeneral_stat == 'True' %}
+            <div class="row m-2"> 
+                <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">домашних матчей</small></h5>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{free_kick_conv_per_match_home}}</h4>
+                                <p class="stat-number-text"> Стандарты/голы</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> 
-            <div class="col-6">
-                <div class="my-chart-card">
-                    <div class="my-header-chart">
-                        <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>
-                    </div>
-                    <div class="my-stat-chart">
-                        <div>
-                            <canvas id="realize_chanceAway" class="my-graph" width="350" height="250"></canvas>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{kick_on_target_per_match_home}}</h4>
+                                <p class="stat-number-text"> Удары по воротам/матч</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> 
-        </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{corner_per_match_home}}</h4>
+                                <p class="stat-number-text"> Угловые/матч</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{kick_on_target_conv_per_match_home}}</h4>
+                                <p class="stat-number-text"> Удар в створ/гол</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- строка с графиками -->
+            <div class="row m-2">
+                {% if showgeneral_stat == 'True' %}
+                <div class="col-6">
+                    <div class="my-chart-card">
+                        <div class="my-header-chart">
+                            <p class = "my-text text-center"> Забито/пропущено за матч</p>
+                        </div>
+                        <div class="my-stat-chart">
+                            <div ><canvas class="my-graph" id="goal_home" width="350" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-6">
+                    <div class="my-chart-card">
+                        <div class="my-header-chart">
+                            <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>
+                        </div>
+                        <div class="my-stat-chart">
+                            <div>
+                                <canvas id="myChart" class="my-graph" width="350" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {% elif showgeneral_stat == 'False' %}
+                <!-- Графики для индивидувльной статистики выбранной команды -->
+                <div class="col-6">
+                    <div class="my-chart-card">
+                        <div class="my-header-chart">
+                            <p class = "my-text text-center"> Сравнение показателей команды дом/выезд</p>
+                        </div>
+                        <div class="my-stat-chart">
+                            <div ><canvas  id="my_radar_graph_h" class="my-graph"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-6">
+                    <div class="my-chart-card">
+                        <div class="my-header-chart">
+                            <p class = "my-text text-center"> Кол-во набранных очков</p>
+                        </div>
+                        <div class="my-stat-chart">
+                            <div>
+                                <canvas id="pts_graph" class="my-graph" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {% endif %}
+            </div>
+            <!-- строка с карточками показатели выезд -->
+            {% if showgeneral_stat == 'True' %}
+            <div class="row m-2">
+                <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">выездных матчей</small></h5>
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{free_kick_conv_per_match_away}}</h4>
+                                <p class="stat-number-text"> Стандарты/голы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{kick_on_target_per_match_away}}</h4>
+                                <p class="stat-number-text"> Удары по воротам/матч</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{corner_per_match_away}}</h4>
+                                <p class="stat-number-text"> Угловые/матч</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="row">
+                            <div class="col-4 statistic-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="col-8 stat-card-info">
+                                <h4 class="stat-number">{{kick_on_target_conv_per_match_away}}</h4>
+                                <p class="stat-number-text"> Удары в створ/голы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- строка с графиками -->
+            {% if showgeneral_stat == 'True' %}
+            <div class="row m-2">
+                <div class="col-6">
+                    <div class="my-chart-card">
+                        <div class="my-header-chart">
+                            <p class = "my-text text-center"> Забито/пропущено за матч</p>
+                        </div>
+                        <div class="my-stat-chart">
+                            <div ><canvas  id="goal_away" class="my-graph" width="350" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-6">
+                    <div class="my-chart-card">
+                        <div class="my-header-chart">
+                            <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>
+                        </div>
+                        <div class="my-stat-chart">
+                            <div>
+                                <canvas id="realize_chanceAway" class="my-graph" width="350" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            {% endif %}
     </div>
 	<!-- Chart JS -->
-	<script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart.js/chart.min.js"></script>
+	<!-- <script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart.js/chart.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <!-- графики для игр дома -->
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -460,6 +561,112 @@
                     },
                 }
             },
+        });
+    </script>
+    <!-- Графики индивидульной статистики команды -->
+    <script>
+        const data = {
+            labels: {{ind_stat_list_label|safe}},
+            datasets: [{
+                label: 'Домашние матчи',
+                data: {{ind_stat_list_value|safe}},
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)',
+            }, {
+                label: 'Выездные матчи',
+                data: {{ind_stat_list_value_a|safe}},
+                fill: true,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)',
+            }]
+            };
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    elements: {
+                    line: {
+                        borderWidth: 3
+                    },
+                    scales :{
+                        xAxes: [{
+                            gridLines: {
+                            display: false,
+                            color: "#CCC8BC",
+                            lineWidth: 3,
+                            zeroLineWidth: 3,
+                            zeroLineColor: "#2C292E",
+                            drawTicks: true,
+                            tickMarkLength: 3
+                            },
+                            ticks: {
+                                fontFamily: "'Open Sans', sans-serif",
+                                fontSize: 12,
+                                fontStyle: "bold",
+                                fontColor: "#545454"
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                display: true,
+                                color: "#CCC8BC",
+                                lineWidth: 3,
+                                zeroLineWidth: 3,
+                                zeroLineColor: "#2C292E",
+                                drawTicks: true,
+                                tickMarkLength: 3
+                            },
+                            ticks: {
+                                fontFamily: "'Open Sans', sans-serif",
+                                fontSize: 12,
+                                fontStyle: "bold",
+                                fontColor: "#545454",
+                            }
+                        }]
+                    }
+                }
+                },
+                };
+            var myChart = new Chart(document.getElementById('my_radar_graph_h'), config);
+    </script>
+    <script>
+                var ctx = document.getElementById('pts_graph').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{pts_label|safe}},
+                datasets: [{
+                    label: 'Дом',
+                    data: {{pts_home|safe}},
+                    borderColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    fill: true,
+                    borderWidth: 1
+                },{
+                    label: 'Выезд',
+                    data: {{pts_away|safe}},
+                    borderColor: 'rgb(54, 162, 235)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: true,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
         });
     </script>
     {% endblock %}

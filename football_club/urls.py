@@ -10,4 +10,5 @@ urlpatterns = [
     path('staff/<slug:staff_slug>/', StaffShow.as_view(), name='staff'),
     path('staff/', StaffListShow.as_view(), name='staff_list'),
     path('trophy/<slug:trophy_slug>/', TrophyShow.as_view(), name='trophy'),
+    path('search/', SearchResultsView.as_view(), name='search_results'),
 ]

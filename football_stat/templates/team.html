@@ -22,7 +22,7 @@
             <form method="POST" enctype="multipart/form-data" action="selectTeam">
                 {% csrf_token %}
                 {% for team in goal_label %}
-                    <input type="submit" value="{{team}}" name="Team" style="width: 100px; margin: 2px;">
+                    <input type="submit" value="{{team}}" name="Team" class="my-button" style="width: 100px; margin: 2px;">
                 {% endfor %}
             </form>
         </div>
@@ -34,7 +34,7 @@
                 <div class="stat-card">
                     <div class="row">
                         <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
+                            <i class="fas fa-running"></i>
                         </div>
                         <div class="col-8 stat-card-info">
                             <h4 class="stat-number">{{home_kick_on_target_converse}}</h4>
@@ -47,7 +47,7 @@
                 <div class="stat-card">
                     <div class="row">
                         <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
+                            <i class="fas fa-running"></i>
                         </div>
                         <div class="col-8 stat-card-info">
                             <h4 class="stat-number">{{away_kick_on_target_converse}}</h4>
@@ -60,7 +60,7 @@
                 <div class="stat-card">
                     <div class="row">
                         <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
+                            <i class="fas fa-flag"></i>
                         </div>
                         <div class="col-8 stat-card-info">
                             <h4 class="stat-number">{{home_corner_converse}}</h4>
@@ -73,7 +73,7 @@
                 <div class="stat-card">
                     <div class="row">
                         <div class="col-4 statistic-icon">
-                            <i class="fas fa-futbol"></i>
+                            <i class="fas fa-flag"></i>
                         </div>
                         <div class="col-8 stat-card-info">
                             <h4 class="stat-number">{{away_corner_converse}}</h4>
@@ -103,7 +103,7 @@
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
-                                <i class="fas fa-futbol"></i>
+                                <i class="fas fa-running"></i>
                             </div>
                             <div class="col-8 stat-card-info">
                                 <h4 class="stat-number">{{kick_on_target_per_match_home}}</h4>
@@ -116,7 +116,7 @@
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
-                                <i class="fas fa-futbol"></i>
+                                <i class="fas fa-flag"></i>
                             </div>
                             <div class="col-8 stat-card-info">
                                 <h4 class="stat-number">{{corner_per_match_home}}</h4>
@@ -129,7 +129,7 @@
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
-                                <i class="fas fa-futbol"></i>
+                                <i class="fas fa-dragon"></i>
                             </div>
                             <div class="col-8 stat-card-info">
                                 <h4 class="stat-number">{{kick_on_target_conv_per_match_home}}</h4>
@@ -214,7 +214,7 @@
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
-                                <i class="fas fa-futbol"></i>
+                                <i class="fas fa-running"></i>
                             </div>
                             <div class="col-8 stat-card-info">
                                 <h4 class="stat-number">{{kick_on_target_per_match_away}}</h4>
@@ -227,7 +227,7 @@
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
-                                <i class="fas fa-futbol"></i>
+                                <i class="fas fa-flag"></i>
                             </div>
                             <div class="col-8 stat-card-info">
                                 <h4 class="stat-number">{{corner_per_match_away}}</h4>
@@ -240,7 +240,7 @@
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
-                                <i class="fas fa-futbol"></i>
+                                <i class="fas fa-dragon"></i>
                             </div>
                             <div class="col-8 stat-card-info">
                                 <h4 class="stat-number">{{kick_on_target_conv_per_match_away}}</h4>

@@ -1,0 +1,40 @@
+<!-- templates/search_results.html -->
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
+    {% block title %}
+        Team search
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div class="container">
+        </br>
+            <h1 class="text-center my-text" style="font-family: 'Roboto' sans-serif;">Search results</h1>
+        </br>        
+        <ul>
+            {% for team in club %}
+            <li>
+                <a style="text-decoration: none;font-size: 25px;" class = "my-text" href="{{ team.get_absolute_url }}"><img src="{{ team.logo.url }}" class="rounded my-logo"> <span class="my-text">{{team.name}}</span></a>
+            </li>
+            {% endfor %}
+            {% for arena in stadium %}
+            <li>
+                <a style="text-decoration: none;font-size: 25px;" class = "my-text" href="{{ arena.get_absolute_url }}"><img src="{{ arena.logo.url }}" class="rounded my-logo"> <span class="my-text">{{arena.name}}</span></a>
+            </li>
+            {% endfor %}
+            {% for person in staff %}
+            <li>
+                <a style="text-decoration: none; font-size: 25px;" class = "my-text" href="{{ person.get_absolute_url }}"><img src="{{ person.logo.url }}" style="max-height: 80px; max-width:80px;margin: 10px;" class="rounded"> <span class="my-text">{{person.first_name}}</span></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div> 
+    {% endblock %}
+</body>

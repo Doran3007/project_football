@@ -15,17 +15,19 @@
             <span class="text-muted text-success"> Premier League:</span>
         </h2>
         </br>
-        <div class="wrap-grid"> 
-            {% for s in staff %}
-            <div class="staff-item">
-                <div class="staff-list">
-                <img src="{{ s.logo.url }}">
-                <h3>{{s.first_name}} {{s.second_name}}</h3>
-                    <span class="role">{{s.role}}</span>
-                    <a href="{{ s.get_absolute_url }}" class="button">Подробнее</a>
+        <div class="col-md-12"> 
+            <div class="wrap-grid"> 
+                {% for s in staff %}
+                <div class="staff-item">
+                    <div class="staff-list">
+                    <img src="{{ s.logo.url }}">
+                    <h3>{{s.first_name}} {{s.second_name}}</h3>
+                        <span class="role">{{s.role}}</span>
+                        <a href="{{ s.get_absolute_url }}" class="button">Подробнее</a>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
 
         <!-- <ul>

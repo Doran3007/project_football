@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <h1 class="text-center my-text">{{trophy.name}}</h1>
         <div class="row mt--2 justify-content-between">
-            <div class="col-6"> 
+            <div class="col-md-6"> 
                 <span class="text-center">
                     <img src="{{ trophy.logo.url }}" class = "img-fluid" style="max-height: 700px; width:700px; margin: 5px;">
                     <p class="text-center my-text">Кубок: {{trophy.name}}</p> 
@@ -23,7 +23,7 @@
 
                 </span>
             </div> 
-            <div class="col-6 mr-2">
+            <div class="col-md-6 mr-2">
                 <h6 class="fw-bold mt-0 mb-1 text-center my-text">Список<span class="text-muted text-success"> победителей:</span></h6>
                 <span> <ul class="category-list my-text">{{trophy.winers|safe}}</ul>
                 {% if  trophy.actual_owner in 'Челси' %}

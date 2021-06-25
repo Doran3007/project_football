@@ -16,7 +16,7 @@
             <h3 class="text-center my-text"> {{club.name}} </h3>
         </br>
             <div class="outer_cont_s">
-                <div class="col-7" style="margin: auto;" >
+                <div class="col-sm-7" style="margin: auto;" >
                     <h6 class="text-center my-text"> Основная информация:</h6>
                     <ul class="my-list">
                         <li><a href="#">Дата создания</a><span>{{club.created}}</span></li>
@@ -24,26 +24,26 @@
                         <li><a href="#">Страна</a><span>{{club.country}}</span></li>
                     </ul>            
                 </div>
-                <div class="col-4 order-last text-center" style="margin: auto;">
-                    <img src="{{ club.logo.url }}" class = "img-fluid my-img " style="max-height: 400px;">
+                <div class="col-sm-4 order-last text-center" style="margin: auto;">
+                    <img src="{{ club.logo.url }}" class = "img-fluid my-img " style="max-height: 200px;">
                 </div>
             </div>
             <div class="outer_cont">
-                <div class="col-8 order-last" style= "margin: auto;">
+                <div class="col-sm-8 order-last" style= "margin: auto;">
                     <h6 class="fw-bold mt-0 text-center my-text">Список<span class="text-muted text-success"> побед:</span></h6>
                     <span> <ul class="category-list my-text">{{club.trophylist|safe}}</ul>
                 </div>
-                <div class="col-4 order-first text-center" style="margin: auto;">
-                    <img src="{% static 'image\club_page\cup-and-other.png' %}" class = "img-fluid my-img" style="max-height: 400px;max-width: 400px;">
+                <div class="col-sm-4 order-first text-center" style="margin: auto;">
+                    <img src="{% static 'image\club_page\cup-and-other.png' %}" class = "img-fluid my-img">
                 </div>
             </div>
             <div class="outer_cont_s ">
-                <div class="col-7" style="margin: auto;">
+                <div class="col-sm-7" style="margin: auto;">
                     <h6 class="text-center my-text"> Кратко о главном:</h6>
                     <span class = "my-text" style="text-align: justify; text-indent: 1.5em;margin: 5px;">{{club.content|safe}}</span>
                 </div>
-                <div class="col-4 order-last text-center" style="margin: auto;">
-                    <img src="{% static 'image\club_page\note.png' %}" class = "img-fluid my-img" style="max-height: 400px;">
+                <div class="col-sm-4 order-last text-center" style="margin: auto;">
+                    <img src="{% static 'image\club_page\note.png' %}" class = "img-fluid my-img">
                 </div>
             </div>
         </div>

@@ -15,13 +15,13 @@
             <div class="container-fluid">
                 <h1 class="text-center my-text">{{staff.first_name}}  {{staff.second_name}}</h1>
                 <div class="row mt--2 justify-content-between">
-                    <div class="col-6"> 
+                    <div class="col-md-6"> 
                         <div class="text-center" style="align-items: center;">
                             <img src="{{ staff.logo.url }}" class = "img-fluid" style="max-height: 600px; width:400px; margin: 5px;"> 
                             <span class="my-text" style="text-align: justify; text-indent: 1.5em;">{{staff.content|safe}}</span>
                         </div>
                     </div> 
-                    <div class="col-6 mr-2">
+                    <div class="col-md-6 mr-2">
                         <h6 class="fw-bold mt-0 mb-1 text-center my-text">Общая<span class="text-muted text-success"> информация:</span></h6>
                         <span> 
                             <ul class="my-list">

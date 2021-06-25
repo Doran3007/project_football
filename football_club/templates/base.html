@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
             {% block title %}
             Base title
@@ -24,8 +25,12 @@
             {% endblock %}
         </div>
         <div id="footer">
-            <p style="text-align: justify; margin-top: 25px; margin-bottom: 0px;" class="text-center my-text" > 2021 </p>
-            <p class="text-center my-text" style="margin-bottom: 0px" > <i class="fab fa-python standart-icon"></i><span class="django-i">django</span></p>
+            <div style="text-align: justify; margin-top: 25px; margin-bottom: 0px;" class="text-center my-text" > 2021 </div>
+            <div class="text-center my-footer" style="margin-bottom: 0px" > 
+                <div class="my-icon"><i class="fab fa-python"></i></div>
+                <div class="my-icon">django</div>
+                <div class="my-icon"><i class="fab fa-bootstrap"></i></div>
+            </div>
         </div>
     </body> 
 </html>

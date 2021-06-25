@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     {% block title %}
-    <h1>Team statistic</h1>
+    Team statistic
     {% endblock %}
 </head>
 <body>
@@ -27,7 +27,8 @@
             </form>
         </div>
         {% if showgeneral_stat == 'False' %}
-        <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">{{var_select_team}}</small></h5>
+        </br>
+        <h1 class="text-center my-text"> {{var_select_team}}</h1>
         <div class="row m-2"> 
             <a href="{% url 'football_stat:team' %}" class="my-text text-center">Вернуться на страницу общей статистики</a>
             <div class="col-md-3">
@@ -143,7 +144,7 @@
             <!-- строка с графиками -->
             <div class="row m-2">
                 {% if showgeneral_stat == 'True' %}
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="my-chart-card">
                         <div class="my-header-chart">
                             <p class = "my-text text-center"> Забито/пропущено за матч</p>
@@ -154,7 +155,7 @@
                         </div>
                     </div>
                 </div> 
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="my-chart-card">
                         <div class="my-header-chart">
                             <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>
@@ -168,7 +169,7 @@
                 </div> 
                 {% elif showgeneral_stat == 'False' %}
                 <!-- Графики для индивидувльной статистики выбранной команды -->
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="my-chart-card">
                         <div class="my-header-chart">
                             <p class = "my-text text-center"> Сравнение показателей команды дом/выезд</p>
@@ -179,7 +180,7 @@
                         </div>
                     </div>
                 </div> 
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="my-chart-card">
                         <div class="my-header-chart">
                             <p class = "my-text text-center"> Кол-во набранных очков</p>
@@ -197,7 +198,7 @@
             {% if showgeneral_stat == 'True' %}
             <div class="row m-2">
                 <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">выездных матчей</small></h5>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
@@ -210,7 +211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
@@ -223,7 +224,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
@@ -236,7 +237,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="stat-card">
                         <div class="row">
                             <div class="col-4 statistic-icon">
@@ -254,7 +255,7 @@
             <!-- строка с графиками -->
             {% if showgeneral_stat == 'True' %}
             <div class="row m-2">
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="my-chart-card">
                         <div class="my-header-chart">
                             <p class = "my-text text-center"> Забито/пропущено за матч</p>
@@ -265,7 +266,7 @@
                         </div>
                     </div>
                 </div> 
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="my-chart-card">
                         <div class="my-header-chart">
                             <p class = "my-text text-center"> Кол-во ударов для 1 гола</p>

@@ -151,3 +151,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+heroku config:set DISABLE_COLLECTSTATIC=1
+

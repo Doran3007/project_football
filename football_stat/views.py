@@ -428,7 +428,6 @@ def individualTeamData(request):
 
     # df_match['month'] = pd.to_datetime(df_match['Date'].dt.strftime('%Y-%m'))
     pts_h = df_match[df_match['HomeTeam'] == var_select_team]
-    pts_h.to_csv('pts_h.csv')
     pts_h_pivot = pts_h.pivot_table(
         index = 'month',
         values='Hwin',
@@ -439,8 +438,6 @@ def individualTeamData(request):
     pts_h_pivot.reset_index(inplace=True)
     pts_h_pivot.sort_values(by='month', ascending=True)
     
-    pts_h_pivot.to_csv('pts_h_pivot.csv')
-
     pts_h_pivot['month'] = pts_h_pivot['month'].apply(str)
 
     pts_label = pts_h_pivot['month'].values.tolist()
@@ -462,7 +459,6 @@ def individualTeamData(request):
 
     # Индивидульнные карточки со статистикой для команд
     df_indicator = df_match[(df_match['AwayTeam'] == var_select_team) | (df_match['HomeTeam'] == var_select_team)]
-    df_indicator.to_csv('df_indicator.csv')
     home_goal = round(sum(df_indicator['FTHG']),1)
     away_goal = round(sum(df_indicator['FTAG']),1)
 

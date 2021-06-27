@@ -230,7 +230,6 @@ body{
 	height: 255px;
     display: block; /* Строчно-блочный элемент */
 	position: absolute;
-	/* background: transparent url(/static/image/browser.jpg) no-repeat top left; */
 	box-shadow: 0px 10px 20px rgba(17, 16, 16, 0.3);
 	transition: 0.5s;
 

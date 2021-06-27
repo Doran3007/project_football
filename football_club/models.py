@@ -21,6 +21,9 @@ class Trophy(models.Model):
 
     def get_absolute_url(self):
         return reverse('football_club:trophy', kwargs={'trophy_slug': self.slug})
+    
+    class Meta:
+        ordering = ['name']
 
 
 class Club(models.Model):
@@ -46,6 +49,10 @@ class Club(models.Model):
     def get_absolute_url(self):
         return reverse('football_club:club', kwargs={'club_slug': self.slug})
 
+    class Meta:
+       ordering = ['name']
+
+
 
 
 class Staff(models.Model):
@@ -68,7 +75,9 @@ class Staff(models.Model):
 
     def get_absolute_url(self):
         return reverse('football_club:staff', kwargs={'staff_slug': self.slug})
-
+    
+    class Meta:
+           ordering = ['second_name']
 
 class Stadium(models.Model):
     name=models.CharField(max_length=64, unique=True)
@@ -90,3 +99,7 @@ class Stadium(models.Model):
     
     def get_absolute_url(self):
         return reverse('football_club:stadium', kwargs={'stadium_slug': self.slug})
+
+    
+    class Meta:
+           ordering = ['name']

@@ -4,23 +4,23 @@
 	--warning-color: #f0932b;
 	--danger-color: #eb4d4b;
 
-	--light-color: #212529;
-	--light-second-color: #727475;
-	--light-third-color:#3e4046;
+	--light-color: #080326;
+	--light-second-color: #101313;
+	--light-third-color:#120640;
 
-	--light-background: #ffffff;
-	--light-second-background: #f0e0e0;
-	--light-third-background: #fcd1d1f1;
+	--light-background: #FFFAFA;
+	--light-second-background: #E0EFFF;
+	--light-third-background: #93AAB8;
 
-	--dark-color: #c8d4df;
-	--dark-second-color: #e4eaff;
-	--dark-third-color:#ffe9e9;
+	--dark-color: #E8FBFF;
+	--dark-second-color: #d2e4f3;
+	--dark-third-color:#f5f5f5;
 
 
-	--dark-background: #060f1c;
-	--dark-second-background: #09182c;
-	--dark-third-background: #0e052cf6;
-
+	--dark-background: #2B3240;
+	--dark-second-background: #52677a;
+	--dark-third-background: #F2994B;
+/* #F2BF80 */
 
 }
 .light {
@@ -71,7 +71,7 @@
     box-sizing: border-box;
 }
 body{
-    font-family: 'Roboto', sans-serif!important;
+    font-family: 'Montserrat'!important;
     background: var(--main-bg-color);
     color:var(--main-color);
 	
@@ -92,6 +92,7 @@ body{
 }
 .nav-link{
 	color: var(--third-color)!important;
+	font-size: 18px!important;
 }
 .nav-link:hover{
     cursor: pointer;
@@ -176,8 +177,9 @@ body{
 }
 .category-list li {
   font-family: "Trebuchet MS", "Lucida Sans";
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--main-bg-color);
   padding: 5px 0;
+  color: var(--main-color);
 }
 .category-list a {
   text-decoration: none;
@@ -360,7 +362,7 @@ body{
 .my-list li {
   font-family: "Montserrat";
   font-weight: 300;
-  border-bottom: 1px solid #ec8d8de4;
+  border-bottom: 1px solid var(--second-color);
   padding: 2px 0;
 }
 .my-list a {
@@ -445,13 +447,13 @@ body{
 
 /* style for conteiner on index.html */
 .outer_cont{
-	display: flex;
+	display: inline-flex;
 	height: 450px;
 	width: 100%;
 	background: var(--main-bg-color);
 }
 .outer_cont_s{
-	display: flex;
+	display: inline-flex;
 	height: 450px;
 	width: 100%;
 	background:var(--second-bg-color);
@@ -536,7 +538,7 @@ body{
 	border: 2px solid #2bc9f0;
 }
 .statistic-icon{
-	color: var(--second-color);
+	color: var(--third-bg-color);
 	font-size: 50px;
 	text-align: center;
 }
@@ -564,11 +566,11 @@ body{
 }
 .my-button{
 	color: var(--third-bg-color);
-	background: var(--second-color);
+	background: var(--third-color);
 	border-radius: 10px;
 }
 .my-button:hover{
-	color: var(--second-color);
+	color: var(--third-color);
 	background: var(--third-bg-color);
 }
 .my-footer{
@@ -576,7 +578,11 @@ body{
 	justify-content: center;
 	align-items: center;
 }
-
+.my-header{
+	font-size: 25px; 
+	font-weight: 700;
+	color: var(--main-color);
+}
 
 
 
@@ -586,14 +592,18 @@ body{
 	.outer_cont{
 		height: 100%;
 		width: 100%;
+		display: inline-block
 	}
 	.outer_cont_s{
 		height: 100%;
 		width: 100%;
+		display: inline-block
+
 	}
 	.inner_cont{
 		margin: auto;
 		width: 100%;
+
 	}
 	.dg-container{
 		width: 100%;
@@ -677,13 +687,27 @@ body{
 		font-size: 8px;
 	}
 	.my-img{
-		max-height: 150px;
-		max-width: 150px;
+		max-height: 75px;
+		max-width: 75px;
 	}
 	
 }
 
-@media only screen and (min-width: 482px) {
+@media only screen and (min-width: 482px) and (max-width: 780px) {
+	.outer_cont{
+		height: 100%;
+		width: 100%;
+		display: inline-block
+	}
+	.outer_cont_s{
+		height: 100%;
+		width: 100%;
+		display: inline-block
+	}
+	.inner_cont{
+		margin: auto;
+		width: 100%;
+	}
 	.dg-wrapper a div{
 		font-style: italic;
 		text-align: center;
@@ -716,19 +740,19 @@ body{
 	.my-list a {
 		text-decoration: none;
 		color: var(--main-color);
-		font-size: 12px;
+		font-size: 14px;
 		margin-bottom: 20px;
 		text-indent: 0;
 
 	}
 	.my-list li span {
 		display: flex;
-		font-size: 10px;
+		font-size: 12px;
 		text-indent: 0;
 		margin: 2px;
 	}
 	.my-text{
-		font-size: 12px;
+		font-size: 14px;
 	}
 	.wrap-grid{
 		display: grid;
@@ -750,7 +774,7 @@ body{
 		font-size: 16px;
 	}
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 780px) {
 	.dg-wrapper a div{
 		font-style: italic;
 		text-align: center;
@@ -794,9 +818,6 @@ body{
 		text-indent: 0;
 		margin: 2px;
 	}
-	.my-text{
-		font-size: 14px;
-	}
 	.wrap-grid{
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -815,6 +836,13 @@ body{
 	}
 	.stat-number{
 		font-size: 17px;
+	}
+	.my-img{
+		max-height: 400px;
+		max-width: 400px;
+	}
+	.my-text{
+		font-size: 16px;
 	}
 }
 

@@ -13,7 +13,9 @@
     <body>
         {% block body %}
             <div class="container-fluid">
-                <h1 class="text-center my-text">{{staff.first_name}}  {{staff.second_name}}</h1>
+            </br>
+                <h1 class="text-center my-header">{{staff.first_name}}  {{staff.second_name}}</h1>
+            </br>
                 <div class="row mt--2 justify-content-between">
                     <div class="col-md-6"> 
                         <div class="text-center" style="align-items: center;">
@@ -33,7 +35,7 @@
                         </span>
                     </br>
                         <h6 class="fw-bold mt-0 mb-1 text-center my-text">Должностные<span class="text-muted text-success"> достижения:</span></h6>
-                        <span class= "my-list" style="text-align: justify; text-indent: 1.5em;">{{staff.trophylist|safe}}</span>
+                        <span class= "my-list" style="text-align: justify;">{{staff.trophylist|safe}}</span>
                     </div>
                 </div>
         {% endblock %}

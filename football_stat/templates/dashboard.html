@@ -3,10 +3,6 @@
 <html lang="en">
     <Head>
         <meta charset="UTF-8">
-        <script src="https://d3js.org/d3.v4.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
         <style>
             #chartdiv {
               width: 100%;
@@ -21,7 +17,9 @@
     <Body>
         {% block body %}
         <div class="container-fluid"> 
-            <h3 class="text-center my-text">Сезон <small class="text-muted my_text_sec_col">{{startSeason}}/{{endtSeason}}</small></h3>
+        </br>
+            <h3 class="text-center my-header">Сезон <small class="text-muted my_text_sec_col">{{startSeason}}/{{endtSeason}}</small></h3>
+        </br>
             <div class="row mt--2">
                 <div class="col-md-6">
                     <div class="card full-height">

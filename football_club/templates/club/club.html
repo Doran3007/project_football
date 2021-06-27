@@ -13,7 +13,7 @@
         {% block body %}
         <div class="container-fluid">
         </br>
-            <h3 class="text-center my-text"> {{club.name}} </h3>
+            <h3 class="text-center my-header"> {{club.name}} </h3>
         </br>
             <div class="outer_cont_s">
                 <div class="col-sm-7" style="margin: auto;" >
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="outer_cont">
-                <div class="col-sm-8 order-last" style= "margin: auto;">
+                <div class="col-sm-7 order-last" style= "margin: auto;">
                     <h6 class="fw-bold mt-0 text-center my-text">Список<span class="text-muted text-success"> побед:</span></h6>
                     <span> <ul class="category-list my-text">{{club.trophylist|safe}}</ul>
                 </div>

@@ -41,12 +41,15 @@
                {% trophy_list %}
             </ul>
           </li>
+        </ul>
+
+        <ul class="navbar-nav mb-2 mb-lg-0">        
           <li class="nav-item mode">
             <a class="nav-link text-align: right" href="#" onclick="switchTheme()">
                 <i class="fas fa-moon dark-icon"></i>
                 <i class="fas fa-sun light-icon"></i>
             </a>
-        </li>
+          </li>
         </ul>
         <form class="d-flex" action="{% url 'football_club:search_results' %}" method="GET">
           <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search">

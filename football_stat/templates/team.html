@@ -4,12 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
     {% block title %}
     Team statistic
     {% endblock %}
@@ -28,7 +22,7 @@
         </div>
         {% if showgeneral_stat == 'False' %}
         </br>
-        <h1 class="text-center my-text"> {{var_select_team}}</h1>
+        <h1 class="text-center my-header"> {{var_select_team}}</h1>
         <div class="row m-2"> 
             <a href="{% url 'football_stat:team' %}" class="my-text text-center">Вернуться на страницу общей статистики</a>
             <div class="col-md-3">
@@ -86,7 +80,7 @@
         </div>
         {% elif showgeneral_stat == 'True' %}
             <div class="row m-2"> 
-                <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">домашних матчей</small></h5>
+                <h5 class="text-center my-header">Показатели <small class="text-muted my_text_sec_col">домашних матчей</small></h5>
                 <div class="col-md-3">
                     <div class="stat-card">
                         <div class="row">
@@ -197,7 +191,7 @@
             <!-- строка с карточками показатели выезд -->
             {% if showgeneral_stat == 'True' %}
             <div class="row m-2">
-                <h5 class="text-center my-text">Показатели <small class="text-muted my_text_sec_col">выездных матчей</small></h5>
+                <h5 class="text-center my-header">Показатели <small class="text-muted my_text_sec_col">выездных матчей</small></h5>
                 <div class="col-md-3">
                     <div class="stat-card">
                         <div class="row">

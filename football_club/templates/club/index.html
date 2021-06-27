@@ -4,9 +4,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../favicon.ico"> 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
     {% block title %}
         Football clubs
     {% endblock %}
@@ -16,35 +13,8 @@
     <div class="container-fluid">
 
     </br>
-        <h1 class="text-center my-text" style="font-family: 'Roboto' sans-serif;">Premier League</h1>
+        <h1 class="text-center my-header" style="font-family: 'Roboto' sans-serif;">Premier League</h1>
     </br>
-        <!-- bootstrap slider -->
-        <!-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-height: 500px; max-width: 500px; align-items: center;">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    {% for c in clubs %}
-                        {% if c.name == "Liverpool FC" %}
-                        <img src="{{ c.teams_photo.url }}" style="max-height: 400px; width:400px; margin: 5px;" class="d-block w-100" alt="...">
-                        <div><a href="{{ c.get_absolute_url }}">{{c.name}}</a></div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% for c in clubs %}
-                <div class="carousel-item" style="align-items: center;">
-                    <img src="{{ c.teams_photo.url }}" style="max-height: 400px; width:400px; margin: 5px;" class="d-block w-100" alt="...">
-                    <div><a href="{{ c.get_absolute_url }}">{{c.name}}</a></div>
-                </div>
-                {% endfor %}
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-            </button>
-            </div> -->
         <div class="outer_cont"> 
             <section id="dg-container" class="dg-container">
                 <div class="dg-wrapper scale">
@@ -82,7 +52,7 @@
         </div>
         <!-- content -->
         <div class="outer_cont_s">
-            <div class="col-7 col-sm-7" style="margin: auto;" >
+            <div class="col-md-7" style="margin: auto;" >
                 <p class="standart_text my-text" >Премье́р-ли́га (англ. Premier League) — профессиональная футбольная лига для английских футбольных клубов 
                     (также в ней могут играть некоторые клубы из Уэльса). Является высшим дивизионом в системе футбольных лиг Англии. 
                     В ней выступают 20 клубов. Чемпионат проходит с августа по май, каждая команда проводит 38 матчей. 
@@ -98,12 +68,15 @@
                     является лучшим национальным чемпионатом в Европе.                    
                     </p>
             </div>
-            <div class="col-4 col-sm-4 order-last" style="margin: auto;">
+            <div class="col-md-4" style="margin: auto;">
                 <img src="{% static 'image\index\kick1.png' %}" class = "img-fluid my-img" style="max-height: 400px;">
             </div>
         </div>
         <div class="outer_cont">
-            <div class="col-6 order-last" style= "margin: auto;">
+            <div class="col-md-4 text-center" style="margin: auto;">
+                <img src="{% static 'image\index\efl-cup.png' %}" class = "img-fluid my-img" style="max-height: 400px;">
+            </div>
+            <div class="col-md-6" style= "margin: auto;">
                 <h6 class="text-center my-text"> Из 45 клубов, только 7 выигрывали чемпионский титул:</h6>
                 <ul class="my-list">
                     <li><a href="#">«Манчестер Юнайтед»</a><span>13</span></li>
@@ -115,12 +88,9 @@
                     <li><a href="#">«Ливерпуль»</a><span>1</span></li>						
                 </ul>
             </div>
-            <div class="col-4 col-sm-4 order-first text-center" style="margin: auto;">
-                <img src="{% static 'image\index\efl-cup.png' %}" class = "img-fluid my-img" style="max-height: 400px;">
-            </div>
         </div>
         <div class="outer_cont_s">
-            <div class="col-9 col-sm-9" style="margin: auto;">
+            <div class="col-md-9" style="margin: auto;">
                 <h6 class="text-center my-text"> Рекорды:</h6>
                 <ul class="my-list">
                     <li><a href="#">Наибольшее количество побед:</a><span>32, «Манчестер Сити» (2017/18), «Ливерпуль» (2019/20)</span></li>
@@ -139,12 +109,15 @@
                     <li><a href="#">Наибольшее количество «сухих матчей»:</a><span>24, Петр Чех («Челси», сезон 2004/05)</span></li>						
                 </ul>
             </div>
-            <div class="col-3 col-sm-3 order-last" style="margin: auto;">
+            <div class="col-md-3 mr-2" style="margin: auto;">
                 <img src="{% static 'image\index\football-player-pop-art.png' %}" class = "img-fluid my-img" style="max-height: 400px;">
             </div>
         </div>
         <div class="outer_cont">
-            <div class="col-9 col-sm-9" style="margin: auto;">
+                        <div class="col-md-3" style="margin: auto;">
+                <img src="{% static 'image\index\players.png' %}" class = "my-img img-fluid" style="max-height: 400px;">
+            </div>
+            <div class="col-md-9 mr-2" style="margin: auto;">
                 <h6 class="text-center my-text"> Лучшие матчи:</h6>
                 <ul class="my-list">
                     <li><a href="#">«Ливерпуль» vs «Арсенал», 4:4</a><span>21/04/2009</span></li>
@@ -157,18 +130,7 @@
                     <li><a href="#">«Ливерпуль» vs «Ман. Сити», 3:1</a><span>10/11/2019</span></li>											
                 </ul>
             </div>
-            <div class="col-3 col-sm-3 order-first" style="margin: auto;">
-                <img src="{% static 'image\index\players.png' %}" class = "my-img img-fluid" style="max-height: 400px;">
-            </div>
         </div>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{% static 'js/jquery.gallery.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/modernizr.custom.53451.js' %}"></script>
-        <script type="text/javascript">
-            $(function() {
-                $('#dg-container').gallery();
-            });
-        </script>
     </div>
     {% endblock %}
 </body>

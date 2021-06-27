@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.core.paginator import Paginator
+
 from django.db.models import Q # новый
 
 
@@ -122,17 +124,18 @@ class TrophyShow(DetailView):
 
 class SearchResultsView(ListView):
     template_name = 'search_results.html'
-    context_object_name = 'search'
-    model = Trophy
+    model = Stadium
 
     def get_context_data(self, **kwargs):
         query = self.request.GET.get('search')
 
         context = super(SearchResultsView, self).get_context_data(**kwargs)
         context.update({
-            'club': Club.objects.filter( Q(name__icontains=query) | Q(country__icontains=query)),
-            'staff': Staff.objects.filter( Q(first_name__icontains=query) | Q(second_name__icontains=query)),
-            'stadium': Stadium.objects.filter( Q(name__icontains=query) | Q(location__icontains=query)),
+            'club': Club.objects.filter( Q(name__icontains=query) | Q(country__icontains=query)).order_by('name'),
+            'staff': Staff.objects.filter( Q(first_name__icontains=query) | Q(second_name__icontains=query)).order_by('second_name'),
+            'stadium': Stadium.objects.filter( Q(name__icontains=query) | Q(location__icontains=query)).order_by('name'),
+            'trophy': Trophy.objects.filter(name__icontains=query).order_by('name'),
+
         })
         return context 
 

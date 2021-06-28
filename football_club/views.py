@@ -118,7 +118,6 @@ class SearchResultsView(ListView):
             'staff': Staff.objects.filter( Q(first_name__icontains=query) | Q(second_name__icontains=query)).order_by('second_name'),
             'stadium': Stadium.objects.filter( Q(name__icontains=query) | Q(location__icontains=query)).order_by('name'),
             'trophy': Trophy.objects.filter(name__icontains=query).order_by('name'),
-
         })
         return context 
 

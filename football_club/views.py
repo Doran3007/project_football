@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
+from django.template.response import TemplateResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.views.generic.detail import DetailView
@@ -20,10 +21,6 @@ def login(request):
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
-# {'clubs': football_club} here we rename data from Club model in "clubs"
-# def index(request):
-#     football_club=Club.objects.all() # Here we pull data of Club model
-#     return render(request, 'main/index.html', {'clubs': football_club})
 
 class HomeShow(ListView):
     model = Club
@@ -39,15 +36,6 @@ class HomeShow(ListView):
 
     def get_queryset(self):
         return Club.objects.order_by('name')
-
-    # -------------Another way to compilate two model for one template---------------
-    # def get_queryset(self):
-    #     return Club.objects.order_by('name')
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(HomeShow, self).get_context_data(**kwargs)
-    #     context['stadium'] = Stadium.objects.order_by('name')
-    #     return context
 
 
 class ClubShow(DetailView):
@@ -65,11 +53,6 @@ class ClubShow(DetailView):
 
         return context
 
-
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['title'] = context['club']
-    #     return context
 
 class StadiumListShow(ListView):
     model = Stadium

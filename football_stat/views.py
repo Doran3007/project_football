@@ -1,10 +1,9 @@
-from pandas.core.indexes.base import Index
-from pandas.core.reshape.pivot import pivot_table
 from football_club.models import Club
 from django.shortcuts import render
 import pandas as pd
 from football_club.models import *
-from django.views.generic.detail import DetailView
+from django.template.response import TemplateResponse
+
 
 
 # Create your views here.
@@ -78,7 +77,7 @@ def dashboardview(request):
         'club': Club.objects.order_by('name'),
         'table': df_max_g_1
     }
-    return render(request, 'templates/dashboard.html', context=context)
+    return render(request, 'club/dashboard.html', context=context)
 
 
 def team_stat(request):
@@ -288,7 +287,7 @@ def team_stat(request):
         # метка для функции если при переключении инфы про одну команду
         'showgeneral_stat':showgeneral_stat
     }
-    return render(request, 'templates/team.html', context=context)
+    return render(request, 'club/team.html', context=context)
 
 def individualTeamData(request):
     var_select_team = request.POST.get('Team')
@@ -544,4 +543,4 @@ def individualTeamData(request):
         'home_corner_converse':home_corner_converse,
         'away_corner_converse':away_corner_converse,
     }
-    return render(request, 'templates/team.html', context=context)
+    return render(request, 'club/team.html', context=context)

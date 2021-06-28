@@ -1,2 +1,4 @@
 .venv/
 football_stat/conn_to_api/conn_to_api.py
+db.sqlite3
+venv/

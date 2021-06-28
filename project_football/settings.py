@@ -28,6 +28,8 @@ SECRET_KEY = 'wx7y^=lz3ek7z-$hlwqardg%$^fo%9hvw9kw67l&-owhw1#2n4'
 DEBUG = True
 
 ALLOWED_HOSTS = ['myfootballproject.herokuapp.com']
+# ALLOWED_HOSTS = ['*', '.***.com', '.herokuapp.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition

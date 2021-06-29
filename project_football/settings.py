@@ -27,7 +27,7 @@ SECRET_KEY = 'wx7y^=lz3ek7z-$hlwqardg%$^fo%9hvw9kw67l&-owhw1#2n4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['myfootballproject.herokuapp.com']
+ALLOWED_HOSTS = ['myfootballproject.herokuapp.com','localhost', '127.0.0.1']
 # ALLOWED_HOSTS = ['*', '.***.com', '.herokuapp.com', 'localhost', '127.0.0.1']
 
 
@@ -156,7 +156,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ADMINS = (('Admin', 'sausagarage@gmail.com'),)
-...
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com' # or google
 EMAIL_HOST_PASSWORD = 'password'
@@ -212,6 +212,6 @@ LOGGING = {
         },
     }
 }
-
+DEBUG_PROPAGATE_EXCEPTIONS = True
 # Activate Django-Heroku.
 django_heroku.settings(locals())

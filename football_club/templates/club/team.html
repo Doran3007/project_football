@@ -276,7 +276,6 @@
             {% endif %}
     </div>
 	<!-- Chart JS -->
-	<!-- <script src="https://appsrv1-147a1.kxcdn.com/atlantis-lite/js/plugin/chart.js/chart.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -292,30 +291,51 @@
                     data: {{realiz_chance|safe}},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
                 }]
             },
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    responsive: true,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                        },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            usePointStyle: true,
+                        },
+                        legend:{
+                            labels:{
+                                color:'#000',
+                                usePointStyle: true,
+                                },
+                            position: 'top',
+                            },
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                        x: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                    },
+                    elements: {
+                    line: {
+                        borderWidth: 3
+                    },
                 }
-            }
+            },
         });
     </script>
     <script>
@@ -372,6 +392,8 @@
                                         'rgba(75, 192, 192, 1)',
                                         'rgba(75, 192, 192, 1)',                                            
                                         ],
+                                    pointStyle: 'star',
+                                    pointRadius: 6,
                             },
                             {
                             label: 'Пропущенные',
@@ -406,14 +428,46 @@
                                         'rgba(255, 206, 86, 1)',
                                         'rgba(255, 206, 86, 1)',
                                     ],
+                                pointStyle: 'triangle',
+                                pointRadius: 6,
                             }
                         ],
                     },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                        },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            usePointStyle: true,
+                        },
+                        legend:{
+                            labels:{
+                                color:'#000',
+                                usePointStyle: true,
+                                },
+                            position: 'top',
+                            },
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                        x: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                    },
+                    elements: {
+                    line: {
+                        borderWidth: 3
                     },
                 }
             },
@@ -431,30 +485,51 @@
                     data: {{realizaway_chance|safe}},
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
                 }]
             },
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    responsive: true,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                        },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            usePointStyle: true,
+                        },
+                        legend:{
+                            labels:{
+                                color:'#000',
+                                usePointStyle: true,
+                                },
+                            position: 'top',
+                            },
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                        x: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                    },
+                    elements: {
+                    line: {
+                        borderWidth: 3
+                    },
                 }
-            }
+            },
         });
     </script>
     <script>
@@ -464,95 +539,129 @@
             data: {
                 labels: {{goalaway_label|safe}},
                 datasets: [
-                            {
-                            label: 'Забитые голы',
-                            data: {{goalaway_away_value|safe}},
-                            borderColor: [
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',                                            
-                                        ],
-                            backgroundColor:[
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(75, 192, 192, 1)',                                            
-                                        ],
-                            },
-                            {
-                            label: 'Пропущенные',
-                            data: {{goalaway_value|safe}},
-                            borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                            backgroundColor: [
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                    ],
-                            }
-                        ],
+                    {
+                    label: 'Забитые голы',
+                    data: {{goalaway_away_value|safe}},
+                    borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                ],
+                    backgroundColor:[
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                ],
+                            pointStyle: 'star',
+                            pointRadius: 6,
                     },
+                    {
+                    label: 'Пропущенные',
+                    data: {{goalaway_value|safe}},
+                    borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                    backgroundColor: [
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 206, 86, 1)',
+                            ],
+                        pointStyle: 'triangle',
+                        pointRadius: 6,
+                    }
+                ],
+            },
             options: {
                 responsive: true,
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
+                    },
                 plugins: {
-                    legend: {
+                    tooltip: {
+                        mode: 'index',
+                        usePointStyle: true,
+                    },
+                    legend:{
+                        labels:{
+                            color:'#000',
+                            usePointStyle: true,
+                            },
                         position: 'top',
+                        },
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                        color: '#000',
+                        }
+                    },
+                    x: {
+                        ticks: {
+                        color: '#000',
+                        }
+                    },
+                },
+                elements: {
+                line: {
+                    borderWidth: 3
                     },
                 }
             },
@@ -588,53 +697,50 @@
                 type: 'radar',
                 data: data,
                 options: {
-                    elements: {
-                    line: {
-                        borderWidth: 3
+                    responsive: true,
+                    interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
                     },
-                    scales :{
-                        xAxes: [{
-                            gridLines: {
-                            display: false,
-                            color: "#CCC8BC",
-                            lineWidth: 3,
-                            zeroLineWidth: 3,
-                            zeroLineColor: "#2C292E",
-                            drawTicks: true,
-                            tickMarkLength: 3
+                    plugins:{
+                        tooltip: {
+                            mode: 'index'
+                        },
+                        legend:{
+                            labels:{
+                                color:'red',
+                                position: 'top',
                             },
-                            ticks: {
-                                fontFamily: "'Open Sans', sans-serif",
-                                fontSize: 12,
-                                fontStyle: "bold",
-                                fontColor: "#545454"
-                            }
-                        }],
-                        yAxes: [{
-                            gridLines: {
-                                display: true,
-                                color: "#CCC8BC",
-                                lineWidth: 3,
-                                zeroLineWidth: 3,
-                                zeroLineColor: "#2C292E",
-                                drawTicks: true,
-                                tickMarkLength: 3
+                        }
+                    },
+                    elements: {
+                        line: {
+                            borderWidth: 3
                             },
-                            ticks: {
-                                fontFamily: "'Open Sans', sans-serif",
-                                fontSize: 12,
-                                fontStyle: "bold",
-                                fontColor: "#545454",
-                            }
-                        }]
-                    }
-                }
+                        },
+                    scales: {
+                        r: {
+                            grid: {
+                                color: 'red',
+                            },
+                            ticks: {
+                                color: 'red',
+                            },
+                            angleLines: {
+                                color: 'red',
+                            },
+                            pointLabels: {
+                                color: 'red',
+                            },
+                        },
+                    },
                 },
-                };
+            };
             var myChart = new Chart(document.getElementById('my_radar_graph_h'), config);
     </script>
     <script>
-                var ctx = document.getElementById('pts_graph').getContext('2d');
+        var ctx = document.getElementById('pts_graph').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -645,24 +751,60 @@
                     borderColor: 'rgb(255, 99, 132)',
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     fill: true,
-                    borderWidth: 1
+                    borderWidth: 1,
+                    pointStyle: 'star',
+                    pointRadius: 6,
                 },{
                     label: 'Выезд',
                     data: {{pts_away|safe}},
                     borderColor: 'rgb(54, 162, 235)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     fill: true,
-                    borderWidth: 1
+                    borderWidth: 1,
+                    pointStyle: 'triangle',
+                    pointRadius: 6,
                 }]
             },
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    responsive: true,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                        },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            usePointStyle: true,
+                        },
+                        legend:{
+                            labels:{
+                                color:'#000',
+                                usePointStyle: true,
+                                },
+                            position: 'top',
+                            },
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                        x: {
+                            ticks: {
+                            color: '#000',
+                            }
+                        },
+                    },
+                    elements: {
+                    line: {
+                        borderWidth: 3
+                    },
                 }
-            }
+            },
         });
+    
     </script>
     {% endblock %}
 </body>

@@ -17,6 +17,7 @@
         <script src="https://d3js.org/d3.v4.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        
     </head>
         <body>
             {% include '_navbar.html' %}
@@ -50,21 +51,21 @@
                 </ul>
             </nav>
             {% endif %}
-        </div>
-        <div id="footer" class="row mt--2">
-            <div style="text-align: justify; margin-top: 25px; margin-bottom: 0px;" class="text-center my-text" > 2021 </div>
-            <div class="text-center my-footer" style="margin-bottom: 0px" > 
-                <div class="my-icon"><i class="fab fa-python"></i></div>
-                <div class="my-icon">django</div>
-                <div class="my-icon"><i class="fab fa-bootstrap"></i></div>
             </div>
-        </div>
-        <script type="text/javascript" src="{% static 'js/jquery.gallery.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/modernizr.custom.53451.js' %}"></script>
-        <script type="text/javascript">
-            $(function() {
-                $('#dg-container').gallery();
-            });
-        </script>
+            <div id="footer" class="row mt--2">
+                <div style="text-align: justify; margin-top: 25px; margin-bottom: 0px;" class="text-center my-text" > 2021 </div>
+                <div class="text-center my-footer" style="margin-bottom: 0px" > 
+                    <div class="my-icon"><i class="fab fa-python"></i></div>
+                    <div class="my-icon">django</div>
+                    <div class="my-icon"><i class="fab fa-bootstrap"></i></div>
+                </div>
+            </div>
+            <script type="text/javascript" src="{% static 'js/jquery.gallery.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/modernizr.custom.53451.js' %}"></script>
+            <script type="text/javascript">
+                $(function() {
+                    $('#dg-container').gallery();
+                });
+            </script>
     </body> 
 </html>

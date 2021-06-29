@@ -20,7 +20,6 @@
 	--dark-background: #2B3240;
 	--dark-second-background: #52677a;
 	--dark-third-background: #F2994B;
-/* #F2BF80 */
 
 }
 .light {
@@ -92,7 +91,6 @@ body{
 }
 .nav-link{
 	color: var(--third-color)!important;
-	font-size: 18px!important;
 }
 .nav-link:hover{
     cursor: pointer;

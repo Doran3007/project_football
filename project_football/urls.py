@@ -27,10 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^', include('football_club.urls')),
     re_path(r'^', include('football_stat.urls')),
-    path(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
-    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ]
     
 
 handler404 = pageNotFound

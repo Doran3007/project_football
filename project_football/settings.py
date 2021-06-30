@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # side app
     # 'debug_toolbar',
@@ -81,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'project_football.wsgi.application'
+WSGI_APPLICATION = 'project_football.wsgi.application'
 
 
 # Database
@@ -139,21 +140,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'dev_static')]
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+
+# INTERNAL_IPS = [
+#     '127.0.0.1',
+# ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
@@ -161,4 +155,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
 # чтобы ошибки отобразились в терминале при значении debag-false
 DEBUG_PROPAGATE_EXCEPTIONS = True
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

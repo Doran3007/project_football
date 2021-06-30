@@ -145,12 +145,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'dev_static')]
 
 
-# INTERNAL_IPS = [
-#     '127.0.0.1',
-# ]
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # чтобы ошибки отобразились в терминале при значении debag-false
 DEBUG_PROPAGATE_EXCEPTIONS = True

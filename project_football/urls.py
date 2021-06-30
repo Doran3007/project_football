@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from football_club.views import *
 from django.views.generic import RedirectView
+from django.views.static import serve 
+
 
 
 urlpatterns = [
@@ -26,18 +28,21 @@ urlpatterns = [
     re_path(r'^', include('football_club.urls')),
     re_path(r'^', include('football_stat.urls')),
     path(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
-    ]
+    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
 
 handler404 = pageNotFound
 
 if settings.DEBUG:
-    import debug_toolbar
+    # import debug_toolbar
 
     import mimetypes
     mimetypes.add_type("application/javascript", ".js", True)
 
     urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
+        # path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
  
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

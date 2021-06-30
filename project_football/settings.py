@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -160,4 +161,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
 # чтобы ошибки отобразились в терминале при значении debag-false
 DEBUG_PROPAGATE_EXCEPTIONS = True
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())

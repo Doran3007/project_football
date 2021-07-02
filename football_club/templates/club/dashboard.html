@@ -89,7 +89,7 @@
                             </div>
                             <div id="chartdiv" class="chartdiv"></div>
                         </div>
-                <div class="col-sm-6 col-m-6 mt-2">
+                <div class="col-sm-6 col-m-6">
                     {{table|safe}}
                 </div>
             </div>
@@ -174,62 +174,62 @@
             // Themes end
             
             var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
-            chart.fontFamily = "Courier New";
+            chart.fontFamily = "Noto Sans TC";
             var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
-            series.randomness = 0.1;
-            series.rotationThreshold = 0.5;
+            series.randomness = 0.2;
+            series.rotationThreshold = 0.3;
             
             series.data = [ {
                 "tag": "liverpool-fc",
-                "count": "200000"
+                "count": "2000000"
             },
             {
                 "tag": "brighton-hove-albion-fc",
-                "count": "150000"
+                "count": "1500000"
             },
             {
                 "tag": "sheffield-united-fc",
-                "count": "130000"
+                "count": "1300000"
             },
             {
                 "tag": "leeds-united-fc",
-                "count": "135000"
+                "count": "1350000"
             },
             {
                 "tag": "leicester-city-fc",
-                "count": "140000"
+                "count": "1400000"
             },
             {
                 "tag": "west-ham-united-fc",
-                "count": "165000"
+                "count": "1650000"
             },
             {
                 "tag": "everton-fc",
-                "count": "120000"
+                "count": "1200000"
             },
             {
                 "tag": "tottenham-hotspur-fc",
-                "count": "140000"
+                "count": "1400000"
             },
             {
                 "tag": "arsenal-fc",
-                "count": "170000"
+                "count": "1700000"
             },
             {
                 "tag": "chelsea-fc",
-                "count": "195000"
+                "count": "1950000"
             },
             {
                 "tag": "manchester-city-fc",
-                "count": "194000"
+                "count": "1940000"
             },
             {
                 "tag": "manchester-united-fc",
-                "count": "190000"
+                "count": "1900000"
             },
             {
                 "tag": "southampton-fc",
-                "count": "170000"
+                "count": "1700000"
             },
         ];
             

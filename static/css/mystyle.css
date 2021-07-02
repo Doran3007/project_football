@@ -749,7 +749,7 @@ body{
 		margin: 2px;
 	}
 	.my-text{
-		font-size: 14px;
+		font-size: 13px;
 	}
 	.wrap-grid{
 		display: grid;
@@ -839,7 +839,12 @@ body{
 		max-width: 400px;
 	}
 	.my-text{
-		font-size: 16px;
+		font-size: 11px;
+	}
+}
+@media only screen and (min-width: 1300px) {
+	.my-text{
+		font-size: 14px;
 	}
 }
 

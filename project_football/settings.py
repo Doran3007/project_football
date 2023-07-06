@@ -91,14 +91,15 @@ WSGI_APPLICATION = 'project_football.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+DATABASES = {'default': dj_database_url.parse('postgres://zktfwonfdmkpwt:5711753b193869417d860396ee16394a76bd43d6c30ac4b9a24c9bef94770d32@ec2-23-23-164-251.compute-1.amazonaws.com:5432/d5tg4mnn0jg1p6')}
 
-DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
-    )
-}
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        # Feel free to alter this value to suit your needs.
+#        default='postgresql://postgres:postgres@localhost:5432/mysite',
+#        conn_max_age=600
+#    )
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

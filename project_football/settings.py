@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,11 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret! 
-#SECRET_KEY = 'wx7y^=lz3ek7z-$hlwqardg%$^fo%9hvw9kw67l&-owhw1#2n4'
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='9hvw9kw67l&-owhw1#2n4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ['project_football','football_club', 'football_stat'] not in os.environ
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -159,5 +157,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # чтобы ошибки отобразились в терминале при значении debag-false
 DEBUG_PROPAGATE_EXCEPTIONS = True
-# Activate Django-Heroku.
-# django_heroku.settings(locals())

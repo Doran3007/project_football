@@ -1,0 +1,20 @@
+databases:
+  - name: project_football
+    databaseName: project_football
+    user: project_football
+
+services:
+  - type: web
+    name: project_football
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn project_football.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mysite
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
